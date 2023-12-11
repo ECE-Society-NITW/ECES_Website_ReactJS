@@ -1,4 +1,4 @@
-// sidebar.js
+
 import React from "react";
 import { slide as Menu } from "react-burger-menu";
 import "./sidebar.css";
@@ -6,7 +6,7 @@ import "./sidebar.css";
 const Sidebar = () => {
   return (
     <Menu
-      isOpen={true} // Always keep the menu open
+      isOpen={true} 
       pageWrapId={"page-wrap"}
       outerContainerId={"outer-container"}
     >
