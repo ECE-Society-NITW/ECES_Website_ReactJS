@@ -1,5 +1,7 @@
 .event-component {
     background-color: rgb(45, 45, 45);
+    border-color: aliceblue;
+    border: 2px;
     color: white;
     width: 300px;
     padding: 20px;
@@ -17,7 +19,7 @@
   
   .event-component p {
     font-size: 16px;
-    margin-bottom: 10px;
+    margin-bottom: 2px;
     text-align: left;
   }
   
@@ -28,7 +30,7 @@
   }
   
   .register-button {
-    background-color: blue;
+    background-color: rgb(77, 77, 255);
     color: white;
     border: none;
     padding: 10px 20px;

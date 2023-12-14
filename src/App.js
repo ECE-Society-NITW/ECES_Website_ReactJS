@@ -5,6 +5,9 @@ import EventComponent from './eventCard';
 function App() {
   return (
     <div>
+      <div className='title'>
+        ECES
+      </div>
       <div className="sidebar">
         <Sidebar />
       </div>
@@ -13,6 +16,14 @@ function App() {
         <EventComponent />
         <EventComponent />
         <EventComponent />
+        <EventComponent />
+        <EventComponent />
+        <EventComponent />
+        <EventComponent />
+        <EventComponent />
+      </div>
+      <div className='title-2'>
+        Event Categories
       </div>
     </div>
     
