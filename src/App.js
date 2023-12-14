@@ -1,13 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
 import Sidebar from './sidebar';
+import EventComponent from './eventCard';
 
 function App() {
   return (
-    <div className="App">
-      <Sidebar />
+    <div>
+      <div className="sidebar">
+        <Sidebar />
+      </div>
+      <div class="event-container">
+        <EventComponent />
+        <EventComponent />
+        <EventComponent />
+        <EventComponent />
+      </div>
     </div>
+    
+    
   );
+  
 }
 
 export default App;
