@@ -1,6 +1,7 @@
 import './App.css';
 import Sidebar from './sidebar';
 import EventComponent from './eventCard';
+import CategoryCard from './categoryCard';
 
 function App() {
   return (
@@ -24,6 +25,13 @@ function App() {
       </div>
       <div className='title-2'>
         Event Categories
+      </div>
+      <div className='event-cat-container'>
+        <CategoryCard wordOfTheDay="Workshop"/>
+        <CategoryCard />
+        <CategoryCard />
+        <CategoryCard />
+        <CategoryCard />
       </div>
     </div>
     

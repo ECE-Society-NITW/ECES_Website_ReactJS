@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import "./eventCard.css"
+import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
 
 const EventComponent = () => {
   const [timeLeft, setTimeLeft] = useState(113); // time in minutes
