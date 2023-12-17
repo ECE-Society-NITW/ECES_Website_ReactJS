@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import "./eventCard.css"
+import "../css/eventCard.css"
 import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
 
 const EventComponent = () => {
@@ -8,10 +8,10 @@ const EventComponent = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setTimeLeft(timeLeft - 1);
-    }, 60000);
+    }, 6000);
     return () => clearTimeout(timer);
   });
-
+  
   return (
     <div className="event-component">
       <h1>ECE-NITW Upcoming Event</h1>
