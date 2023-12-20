@@ -28,6 +28,11 @@
     margin-bottom: -40px;
     text-align: left;
   }
+
+  .event-list {
+    display: flex;
+    justify-content: space-between;
+  }
   
   .register-button {
     background-color: rgb(77, 77, 255);
