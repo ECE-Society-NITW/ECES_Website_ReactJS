@@ -1,7 +1,7 @@
 import Dashboard from './pages/Dashboard';
 import { useContextAuth } from './context/AuthContext';
 import React, { useEffect } from 'react';
-import { Typography, Avatar } from '@mui/material';
+import { Avatar } from '@mui/material';
 import './css/App.css';
 
 const App = () => {
