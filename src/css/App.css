@@ -50,7 +50,6 @@ body {
   overflow-x: auto;
   overflow-y: hidden;
   height: 200px;
-  white-space: nowrap;
   margin-left: 380px;
 }
 .event-cat-container > * {
@@ -62,7 +61,7 @@ body {
 
 .title-3{
   margin-left: 100px;
-  margin-top: 20px;
+  margin-top: 10px;
   font-size: 1.5rem;
   color: #dadada;
 }
@@ -75,4 +74,7 @@ body {
   margin-top: 30px;
   margin-left: 90px;
   margin-bottom: 30px;
+}
+.prev-event-cat > * {
+  margin-right: 15px;   
 }

@@ -39,6 +39,8 @@ const Dashboard = () => {
       </div>
       <div className='prev-event-cat'>
         <PrevEventCard />
+        <PrevEventCard />
+        <PrevEventCard />
       </div>
     </div>
   )
