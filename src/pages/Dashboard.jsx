@@ -1,6 +1,4 @@
 import React from 'react'
-import CategoryCard from '../components/categoryCard';
-import PrevEventCard from '../components/prevEventCard';
 import Events from '../components/Events.jsx';
 import { Box } from '@mui/material';
 

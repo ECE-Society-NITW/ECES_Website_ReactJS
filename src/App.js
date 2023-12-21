@@ -1,7 +1,6 @@
 import Dashboard from './pages/Dashboard';
 import { useContextAuth } from './context/AuthContext';
 import React, { useEffect } from 'react';
-import { Avatar } from '@mui/material';
 import './css/App.css';
 import Sidebar from './components/sidebar';
 import { ThemeProvider, createTheme } from '@mui/material/styles';

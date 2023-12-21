@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import EventCard from './EventCard'
-import { Stack, Box } from '@mui/material'
+import { Stack } from '@mui/material'
 import NodeJS from '../utils/NodeJS'
 
 const Events = () => {
