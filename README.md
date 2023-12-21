@@ -1,4 +1,4 @@
-# ReactJS Hosted on Netlify
+# ReactJS Hosted on Netlifyy
 
 ## [ECES Netlify](https://eces-nitw.netlify.app/)
 
