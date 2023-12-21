@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import EventCard from './EventCard'
+import EventCard from './EventCard.jsx'
 import { Stack } from '@mui/material'
 import NodeJS from '../utils/NodeJS'
 
