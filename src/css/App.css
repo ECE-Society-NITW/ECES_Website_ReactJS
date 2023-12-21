@@ -40,7 +40,7 @@ body {
 
 .title-2{
   margin-left: 100px;
-  margin-top: 30px;
+  margin-top: 20px;
   font-size: 1.5rem;
   color: #dadada;
 }
@@ -49,13 +49,20 @@ body {
   display: flex;
   overflow-x: auto;
   overflow-y: hidden;
-  height: 220px;
+  height: 200px;
   white-space: nowrap;
-  margin-left: 90px;
+  margin-left: 380px;
 }
 .event-cat-container > * {
   margin-right: 15px;
 }
 .event-cat-container::-webkit-scrollbar {
   display: none;
+}
+
+.title-3{
+  margin-left: 100px;
+  margin-top: 20px;
+  font-size: 1.5rem;
+  color: #dadada;
 }

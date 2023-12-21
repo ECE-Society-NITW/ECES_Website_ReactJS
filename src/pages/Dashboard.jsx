@@ -33,6 +33,9 @@ const Dashboard = () => {
         <CategoryCard />
         <CategoryCard />
       </div>
+      <div className='title-3'>
+        Previous Events
+      </div>
     </div>
   )
 }

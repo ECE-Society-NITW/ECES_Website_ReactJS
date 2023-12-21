@@ -32,7 +32,7 @@ const GoogleAuth = () => {
     }
 
     return (
-        <div>
+        <div >
             {!JWT && <GoogleLogin
                 onSuccess={handleSuccess}
                 onError={handleFailure}
