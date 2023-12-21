@@ -1,62 +1,47 @@
-import React, { useState, useEffect } from 'react';
-import "../css/eventCard.css"
-// import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
+import { Card, CardMedia, Chip, Typography, CardContent, CardActions, Button, Box, Stack } from '@mui/material'
+import { Code, LocationOn } from '@mui/icons-material'
+import React, { useEffect } from 'react'
 
-const EventComponent = () => {
-  const [events, setEvents] = useState([]);
-  const [timeLeft, setTimeLeft] = useState(113); 
+const EventCard = ({ data: { title, description, location } }) => {
+    useEffect(() => {
+        console.log()
+    }, [])
+    return (
+        <>
+            <Card sx={{ margin: 'auto', borderRadius: 6 }}>
+                <Stack direction='row' sx={{ width: '1000px', height: '270px', padding: '10px', backgroundColor: '#282828' }}>
+                    <CardMedia
+                        sx={{ width: '500px', height: '250px', borderRadius: 6 }}
+                        image="https://mui.com/static/images/cards/contemplative-reptile.jpg"
+                        title="green iguana"
+                    />
+                    <CardContent sx={{ height: '100%', width: '700px' }}>
+                        <Stack direction='column' sx={{ height: '100%', justifyContent: 'space-between', }} >
+                            <Typography gutterBottom variant="h5" color='white' component="div">
+                                {title}
+                            </Typography>
+                            <Typography variant="body2" color="white">
+                                {description}
+                            </Typography>
+                            <CardActions>
+                                <Button size="small" variant='contained'>Register</Button>
+                            </CardActions>
+                        </Stack>
+                    </CardContent>
+                    <CardContent sx={{ height: '100%', width: '300px' }}>
+                        <Stack>
+                            <Box>
+                                <Chip icon={<Code />} label="Software" />
+                                <Chip icon={<LocationOn />} label="TimeSquare" />
+                                <Chip icon={<Code />} label="Software" variant="outlined" />
+                            </Box>
+                        </Stack>
+                    </CardContent>
+                </Stack>
+            </Card>
 
-  useEffect(() => {
-    
-    const fetchData = async () => {
-      try {
-        const response = await fetch('https://eceswebsitenodejs-production.up.railway.app/api/events');
-        const data = await response.json();
+        </>
+    )
+}
 
-        
-        setEvents(data.data);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
-    fetchData(); 
-
-    const timer = setInterval(() => {
-      setTimeLeft(timeLeft - 1);
-    }, 60000); 
-
-    
-    return () => {
-      clearInterval(timer);
-    };
-  }, [timeLeft]);
-  
-  return (
-    <div className="event-component">  
-      <div className="event-list">
-        {events.map(event => (
-          <div key={event._id} className="event-card">
-            {event.photo && (
-              <img
-                src={event.photo}
-                alt={`Event: ${event.title}`}
-                style={{ width: '200px', height: 'auto', borderRadius: '15px' }}
-              />
-            )}
-            <div className="event-details">
-              <p>Title: {event.title}</p>
-              <p>Date and Time: {new Date(event.dateTime).toLocaleString()}</p>
-              <p>Location: {event.location}</p>
-              <p>Description: {event.description}</p>
-              <p>Target Audience: {event.targetAudience}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-      <button className="register-button">Register</button>
-    </div>
-  );
-};
-
-export default EventComponent;
+export default EventCard
