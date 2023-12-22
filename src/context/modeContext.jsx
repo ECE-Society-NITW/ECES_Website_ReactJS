@@ -8,7 +8,7 @@ const ModeState = ({ children }) => {
 
     useEffect(()=>{
         setMode('dark')
-    })
+    },[])
 
     return (
         <ModeContext.Provider value={{mode,setMode}}>
