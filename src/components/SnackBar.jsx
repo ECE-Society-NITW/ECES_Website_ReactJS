@@ -23,9 +23,7 @@ const SnackBar = () => {
             onClose={handleClose}
             anchorOrigin={{
                 vertical:'top',
-                //  { xs: 'top', md: 'bottom' },
                 horizontal:'center'
-                //  {xs:'center',md:'left'}
             }}>
             <Alert onClose={handleClose} severity={snackBarSeverity} sx={{ width: '100%' }}>
                 {snackBarMessage}

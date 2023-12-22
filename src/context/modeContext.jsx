@@ -1,14 +1,10 @@
-import React, { createContext, useContext, useEffect } from 'react'
+import React, { createContext, useContext } from 'react'
 import { useColorScheme } from '@mui/material'
 const ModeContext = createContext()
 
 const ModeState = ({ children }) => {
 
     const { mode, setMode } = useColorScheme()
-
-    useEffect(()=>{
-        setMode('dark')
-    },[])
 
     return (
         <ModeContext.Provider value={{mode,setMode}}>

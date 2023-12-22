@@ -5,7 +5,7 @@ import { useContextMode } from '../context/modeContext';
 
 const ToggleMode = () => {
 
-    const { mode, setMode } = useContextMode()
+    const { mode, setMode } = useContextMode('dark')
 
     const toggleMode = () => {
         if (mode === 'light') {

@@ -8,25 +8,20 @@ import Sidebar from './components/sidebar';
 import SnackBar from './components/SnackBar';
 import Trials from './components/Trials';
 import { CssBaseline } from '@mui/material';
-// import ToggleMode from './components/ToggleMode';
+import { Experimental_CssVarsProvider as CssVarsProvider } from '@mui/material'
+import { ModeState } from './context/modeContext';
 
-
-// const darkTheme = createTheme({
-//   palette: {
-//     mode: 'dark',
-//   },
-// });
 
 const App = () => {
-  const { JWT, user } = useContextAuth() // import setJWT if needed
+  const { JWT, user } = useContextAuth()
   useEffect(() => {
 
   }, [JWT, user])
 
   return (
+    // <CssVarsProvider>
+    //   <ModeState>
     <>
-      {/* <CssVarsProvider> */}
-        {/* <ThemeProvider theme={darkTheme}> */}
         <CssBaseline />
         <Sidebar />
         <Routes>
@@ -35,20 +30,10 @@ const App = () => {
           <Route path="/Trials" element={<Trials />} />
         </Routes>
         <SnackBar />
-        {/* </ThemeProvider> */}
-      {/* </CssVarsProvider> */}
+    {/* //   </ModeState> */}
+    {/* // </CssVarsProvider> */}
     </>
   );
 }
 
 export default App;
-
-
-/*
-{
-  open:"false",
-  severity:"success",
-  message:"This is a snack bar!"
-}
-
-*/
