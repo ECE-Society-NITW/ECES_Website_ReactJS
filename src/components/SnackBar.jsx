@@ -14,10 +14,9 @@ const SnackBar = () => {
     const handleClose = () => {
         setSnackBarState(false)
     }
-
+    
     return (
         <Snackbar
-            
             open={snackBarState}
             autoHideDuration={1000}
             onClose={handleClose}

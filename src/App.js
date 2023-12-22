@@ -8,8 +8,7 @@ import Sidebar from './components/sidebar';
 import SnackBar from './components/SnackBar';
 import Trials from './components/Trials';
 import { CssBaseline } from '@mui/material';
-import { Experimental_CssVarsProvider as CssVarsProvider } from '@mui/material'
-import { ModeState } from './context/modeContext';
+import ToggleMode from './components/ToggleMode';
 
 
 const App = () => {
@@ -19,9 +18,8 @@ const App = () => {
   }, [JWT, user])
 
   return (
-    // <CssVarsProvider>
-    //   <ModeState>
     <>
+        <ToggleMode/>
         <CssBaseline />
         <Sidebar />
         <Routes>
@@ -30,8 +28,6 @@ const App = () => {
           <Route path="/Trials" element={<Trials />} />
         </Routes>
         <SnackBar />
-    {/* //   </ModeState> */}
-    {/* // </CssVarsProvider> */}
     </>
   );
 }

@@ -8,7 +8,6 @@ import { BrowserRouter } from 'react-router-dom';
 import { SnackBarState } from './context/SnackBarContext';
 import { ModeState } from './context/modeContext';
 import { Experimental_CssVarsProvider as CssVarsProvider } from '@mui/material'
-import ToggleMode from './components/ToggleMode';
 const clientId = "501179525954-ujf85hcbcr17l2e1elem6e1ra4ra55nh.apps.googleusercontent.com"
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -20,7 +19,6 @@ root.render(
           <SnackBarState>
             <AuthState>
               <GoogleOAuthProvider clientId={clientId}>
-              <ToggleMode />
                 <App />
               </GoogleOAuthProvider>
             </AuthState>
