@@ -5,9 +5,10 @@ import { useContextAuth } from './context/AuthContext';
 import React, { useEffect } from 'react';
 import './css/App.css';
 import Sidebar from './components/sidebar';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import Trials from './components/Trials';
+import { ThemeProvider, createTheme } from '@mui/material';
+import SnackBar from './components/SnackBar';
 
 const darkTheme = createTheme({
   palette: {
@@ -17,7 +18,6 @@ const darkTheme = createTheme({
 
 const App = () => {
   const { JWT, user } = useContextAuth() // import setJWT if needed
-
   useEffect(() => {
 
   }, [JWT, user])
@@ -32,10 +32,20 @@ const App = () => {
           <Route path="/Members" element={<Members />} />
           <Route path="/Trials" element={<Trials />} />
         </Routes>
+      <SnackBar/>
       </ThemeProvider>
     </>
   );
-
 }
 
 export default App;
+
+
+/*
+{
+  open:"false",
+  severity:"success",
+  message:"This is a snack bar!"
+}
+
+*/

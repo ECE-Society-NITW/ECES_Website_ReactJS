@@ -2,8 +2,15 @@ import { Card, CardMedia, Chip, Typography, CardContent, CardActions, Button, Bo
 import { Code, LocationOn } from '@mui/icons-material'
 import React, { useEffect } from 'react'
 import NodeJS from '../utils/NodeJS'
+import { useContextSnackBar } from '../context/SnackBarContext'
 
 const EventCard = ({ data: { event_id, title, description, location, photo } }) => {
+
+    const {
+        setSnackBarState,
+        setSnackBarSeverity,
+        setSnackBarMessage
+    } = useContextSnackBar()
 
     useEffect(() => {
 
@@ -12,7 +19,11 @@ const EventCard = ({ data: { event_id, title, description, location, photo } }) 
     const register = ()=>{
         const credential = localStorage.getItem('jwt')
         NodeJS.POST(`/api/events/register/${event_id}`,{credential})
-              .then(data=>console.log(data))
+              .then(({success,message})=>{
+                  setSnackBarSeverity(success?'success':'info')
+                  setSnackBarMessage(message)
+                  setSnackBarState(true)
+              })
               .catch(err=>console.log(err=>console.log(err)))
     }
 
