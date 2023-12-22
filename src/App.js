@@ -1,11 +1,12 @@
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
+import Members from './pages/Members';
 import { useContextAuth } from './context/AuthContext';
 import React, { useEffect } from 'react';
 import './css/App.css';
 import Sidebar from './components/sidebar';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import { Routes, Route } from 'react-router-dom';
 import Trials from './components/Trials';
 
 const darkTheme = createTheme({
@@ -27,8 +28,9 @@ const App = () => {
         <CssBaseline />
         <Sidebar />
         <Routes>
-          <Route path='/' element={<Dashboard />} />
-          <Route path='/Trials' element={<Trials/>} />
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/Members" element={<Members />} />
+          <Route path="/Trials" element={<Trials />} />
         </Routes>
       </ThemeProvider>
     </>
