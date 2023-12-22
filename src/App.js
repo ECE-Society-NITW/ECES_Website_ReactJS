@@ -5,6 +5,8 @@ import './css/App.css';
 import Sidebar from './components/sidebar';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
+import { Routes, Route } from 'react-router-dom';
+import Trials from './components/Trials';
 
 const darkTheme = createTheme({
   palette: {
@@ -23,10 +25,11 @@ const App = () => {
     <>
       <ThemeProvider theme={darkTheme}>
         <CssBaseline />
-        {/* {user && <Avatar src={user.picture}></Avatar>} */}
-        {/* {user.name} */}
         <Sidebar />
-        <Dashboard />
+        <Routes>
+          <Route path='/' element={<Dashboard />} />
+          <Route path='/Trials' element={<Trials/>} />
+        </Routes>
       </ThemeProvider>
     </>
   );

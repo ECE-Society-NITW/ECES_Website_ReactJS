@@ -1,25 +1,59 @@
 import { Card, CardMedia, Chip, Typography, CardContent, CardActions, Button, Box, Stack } from '@mui/material'
 import { Code, LocationOn } from '@mui/icons-material'
 import React, { useEffect } from 'react'
+import NodeJS from '../utils/NodeJS'
 
-const EventCard = ({ data: { title, description, location, photo } }) => {
+const EventCard = ({ data: { event_id, title, description, location, photo } }) => {
+
     useEffect(() => {
-        
+
     }, [])
+
+    const register = ()=>{
+        const credential = localStorage.getItem('jwt')
+        NodeJS.POST(`/api/events/register/${event_id}`,{credential})
+              .then(data=>console.log(data))
+              .catch(err=>console.log(err=>console.log(err)))
+    }
+
     return (
         <>
-
-            <Card sx={{ margin: 'auto', borderRadius: 6 }}>
-                <Stack direction='row' sx={{ width: '1000px', height: '270px', padding: '10px', backgroundColor: '#282828' }}>
-                    {/* <Paper elevation={20} sx={{ borderRadius: 6, width: '500px', height: '250px', borderRadius: 6 }}> */}
+            <Card
+                sx={{ margin: 'auto', borderRadius: 6 }}>
+                <Stack
+                    direction={{ xs: 'column', md: 'row' }}
+                    sx={{
+                        width: { xs: '320px', md: '1000px' },
+                        minHeight: { xs: '0px', md: '270px' },
+                        padding: { xs: '7px', md: '10px' },
+                        backgroundColor: '#282828'
+                    }}
+                    justifyContent='center'
+                >
                     <CardMedia
-                        sx={{ width: '500px', height: '250px', borderRadius: 6 }}
+                        sx={{
+                            width: { xs: '300px', md: '500px' },
+                            height: { xs: '240px', md: '250px' },
+                            borderRadius: 6,
+                            margin: 'auto'
+                        }}
                         image={photo}
-                        title="green iguana">
+                        title={title}>
                     </CardMedia>
-                    {/* </Paper> */}
-                    <CardContent sx={{ height: '100%', width: '700px' }}>
-                        <Stack direction='column' sx={{ height: '100%', justifyContent: 'space-between', }} >
+                    <CardContent
+                        sx={{
+                            height: '100%',
+                            width: {xs:'300px',md:'700px'}
+                        }}>
+                        <Stack
+                            direction='column'
+                            sx={{
+                                // height: '10px',
+                                // width:'10px',
+                                // justifyContent: 'space-between',
+                                // backgroundColor:'red'
+                            }}
+                        >
                             <Typography gutterBottom variant="h5" color='white' component="div">
                                 {title}
                             </Typography>
@@ -27,22 +61,21 @@ const EventCard = ({ data: { title, description, location, photo } }) => {
                                 {description}
                             </Typography>
                             <CardActions>
-                                <Button size="small" variant='contained'>Register</Button>
+                                <Button size="small" variant='contained' onClick={register} >Register</Button>
                             </CardActions>
                         </Stack>
                     </CardContent>
-                    <CardContent sx={{ height: '100%', width: '300px' }}>
-                        <Stack>
+                    <CardContent>
+                        <Stack direction='column'>
                             <Box>
-                                <Chip icon={<Code />} label="Software" margin={3}/>
-                                <Chip icon={<LocationOn />} label="TimeSquare" margin={3}/>
-                                <Chip icon={<Code />} label="Software" variant="outlined" margin={3}/>
+                                <Chip icon={<Code />} label="Software"/>
+                                <Chip icon={<LocationOn />} label="TimeSquare"/>
+                                <Chip icon={<Code />} label="Software" variant="outlined"/>
                             </Box>
                         </Stack>
                     </CardContent>
                 </Stack>
             </Card>
-
         </>
     )
 }

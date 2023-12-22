@@ -31,6 +31,7 @@ const Sidebar = () => {
         alignItems="center"
         marginTop={2} 
         marginBottom={2} 
+        sx={{backdropFilter:'blur(6px)'}}
       >
         <Box margin={3} >
           <Button startIcon={<HomeIcon />} variant="outlined" >
