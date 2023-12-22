@@ -3,7 +3,6 @@ import '../css/prevEventCard.css'
 
 
 const prevEventCard = () => {
-
   
 
   return (
