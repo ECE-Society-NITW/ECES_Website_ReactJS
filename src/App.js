@@ -1,4 +1,6 @@
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
+import Members from './pages/Members';
 import { useContextAuth } from './context/AuthContext';
 import React, { useEffect } from 'react';
 import './css/App.css';
@@ -21,13 +23,20 @@ const App = () => {
 
   return (
     <>
+    <Router>
       <ThemeProvider theme={darkTheme}>
         <CssBaseline />
         {/* {user && <Avatar src={user.picture}></Avatar>} */}
         {/* {user.name} */}
         <Sidebar />
-        <Dashboard />
+        
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/Members" element={<Members />} />
+        </Routes>
+          
       </ThemeProvider>
+      </Router>
     </>
   );
 

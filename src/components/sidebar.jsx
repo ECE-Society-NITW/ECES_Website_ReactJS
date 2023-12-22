@@ -1,5 +1,6 @@
 import { Button } from "@mui/material";
-import React from "react";
+import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
 import { slide as Menu } from "react-burger-menu";
 import "../css/sidebar.css";
 import Stack from '@mui/material/Stack';
@@ -9,22 +10,29 @@ import SearchIcon from '@mui/icons-material/Search';
 import ContactIcon from '@mui/icons-material/ContactMail';
 import SendIcon from '@mui/icons-material/Send';
 import PersonIcon from '@mui/icons-material/Person';
-import SettingsIcon from '@mui/icons-material/Settings';
+import GroupIcon from '@mui/icons-material/Group';
 import GoogleAuth from "./GoogleAuth";
 
 const Sidebar = () => {
+  // eslint-disable-next-line no-unused-vars
+  const [isMembersClicked, setMembersClicked] = useState(false);
+  // eslint-disable-next-line no-unused-vars
+  const [isHomeClicked, setHomeClicked] = useState(false);
+  const navigate = useNavigate();
+
+  const handleMembersClick = () => {
+    setMembersClicked(true);
+    navigate('/Members');
+  };
   
+  const handleHomeClick = () => {
+    setHomeClicked(true);
+    navigate('/');
+  };
+
   return (
-    /*<Menu isOpen={false} pageWrapId={"page-wrap"} outerContainerId={"outer-container"}>
-      <Button>Home</Button>
-      <Button>Search</Button>
-      <Button>Contact</Button>
-      <Button>Send</Button>
-      <Button>Profile</Button>
-      <Button>Settings</Button>
-      <Button><GoogleAuth/></Button>
-    </Menu>
-  );*/
+    <>
+    
   <Menu isOpen={false} pageWrapId="page-wrap" outerContainerId="outer-container">
       <Stack
         direction="column"
@@ -33,7 +41,7 @@ const Sidebar = () => {
         marginBottom={2} 
       >
         <Box margin={3} >
-          <Button startIcon={<HomeIcon />} variant="outlined" >
+          <Button startIcon={<HomeIcon />} variant="outlined" onClick={handleHomeClick}>
             Home
           </Button>
         </Box >
@@ -58,8 +66,8 @@ const Sidebar = () => {
           </Button>
         </Box>
         <Box margin={3} >
-          <Button startIcon={<SettingsIcon />} variant="outlined" marginBottom={2}>
-            Settings
+          <Button startIcon={<GroupIcon />} variant="outlined" marginBottom={2} onClick={handleMembersClick}>
+            Members
           </Button>
         </Box>
         <Box margin={3}>
@@ -69,6 +77,8 @@ const Sidebar = () => {
         </Box>
       </Stack>
     </Menu>
+    
+    </>
   )
 };
 
