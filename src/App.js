@@ -8,8 +8,15 @@ import Sidebar from './components/sidebar';
 import SnackBar from './components/SnackBar';
 import Trials from './components/Trials';
 import { CssBaseline } from '@mui/material';
-import ToggleMode from './components/ToggleMode';
+import ToggleMode from './components/ToggleMode'
+// import ToggleMode from './components/ToggleMode';
 
+
+// const darkTheme = createTheme({
+//   palette: {
+//     mode: 'dark',
+//   },
+// });
 
 const App = () => {
   const { JWT, user } = useContextAuth()

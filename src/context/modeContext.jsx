@@ -4,6 +4,7 @@ const ModeContext = createContext()
 
 const ModeState = ({ children }) => {
     const { mode, setMode } = useColorScheme()
+
     return (
         <ModeContext.Provider value={{mode,setMode}}>
             {children}
@@ -11,4 +12,5 @@ const ModeState = ({ children }) => {
     )
 }
 const useContextMode = () => useContext(ModeContext)
+
 export { ModeState, useContextMode }
