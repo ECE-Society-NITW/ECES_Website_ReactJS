@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
 import Members from './pages/Members';
 import { useContextAuth } from './context/AuthContext';
