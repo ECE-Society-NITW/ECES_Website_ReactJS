@@ -13,21 +13,6 @@ const Dashboard = () => {
         Events
       <Events/>
       </Box>
-      {/* <Box className='event-cat-container'>
-        <CategoryCard wordOfTheDay="Workshop" />
-        <CategoryCard />
-        <CategoryCard />
-        <CategoryCard />
-        <CategoryCard />
-      </Box> */}
-      {/* <Box className='title-3'>
-        Previous Events
-      </Box> */}
-      {/* <Box className='prev-event-cat'>
-        <PrevEventCard />
-        <PrevEventCard />
-        <PrevEventCard />
-      </Box> */}
     </Box>
   )
 }
