@@ -1,5 +1,5 @@
 import { Card, CardMedia, Chip, Typography, CardContent, CardActions, Button, Box, Stack } from '@mui/material'
-import { Code, LocationOn } from '@mui/icons-material'
+import { Code, LocationOn, Phone } from '@mui/icons-material'
 import React, { useEffect } from 'react'
 
 const EventCard = ({ data: { title, description, location, photo } }) => {
@@ -35,9 +35,10 @@ const EventCard = ({ data: { title, description, location, photo } }) => {
                     <CardContent sx={{ height: '100%', width: '300px' }}>
                         <Stack>
                             <Box>
-                                <Chip icon={<Code />} label="Software" />
-                                <Chip icon={<LocationOn />} label="TimeSquare" />
-                                <Chip icon={<Code />} label="Software" variant="outlined" />
+                                <Chip icon={<Code />} label="Software" margin={1}/>
+                                <Chip icon={<LocationOn />} label="TimeSquare" margin={1}/>
+                                <Chip icon={<Code />} label="Software" variant="outlined" margin={1}/>
+                                <Chip icon={<Phone />} label="Contact" variant="outlined" margin={1}/>
                             </Box>
                         </Stack>
                     </CardContent>

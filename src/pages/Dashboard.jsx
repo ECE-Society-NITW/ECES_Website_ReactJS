@@ -9,10 +9,10 @@ const Dashboard = () => {
       <Box className='title'>
         ECES
       </Box>
-      <Box className='title-2'>
+      <Box className='title-2' marginBottom={4.5} marginLeft={20}>
         Events
-      <Events/>
       </Box>
+      <Events/>
     </Box>
   )
 }

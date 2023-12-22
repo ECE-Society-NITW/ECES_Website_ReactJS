@@ -1,17 +1,10 @@
-/* sidebar.css */
-
-/* Reset default styles */
-body, h1, h2, h3, p, ul {
-    margin: 0;
-    padding: 0;
-}
-
-/* Sidebar Styles */
 .bm-menu {
     background: #242424; 
     padding: 2em;
     font-size: 1.15em;
-    width: 200px;
+    width: 300px;
+    overflow-y: hidden; 
+    max-height: 100vh;
 }
 
 .bm-item {
@@ -21,6 +14,7 @@ body, h1, h2, h3, p, ul {
     text-decoration: none;
     margin-bottom: 10px;
     transition: color 0.3s ease;
+    overflow-x: hidden; 
 }
 
 .bm-item:hover {
@@ -28,7 +22,7 @@ body, h1, h2, h3, p, ul {
 }
 
 .bm-burger-bars {
-    background: #00ff00; /* Change the color of the bars */
+    background: #00ff00; 
 }
 
 .bm-burger-button {
@@ -43,9 +37,10 @@ body, h1, h2, h3, p, ul {
 #page-wrap {
     margin-left: 250px; 
     transition: margin 0.3s ease;
+    
 }
-
-
-.menu-open #page-wrap {
-    margin-left: 0;
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    .bm-menu::-webkit-scrollbar {
+        width: 0; 
+    }
 }
