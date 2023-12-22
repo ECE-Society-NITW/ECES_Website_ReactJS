@@ -1,20 +1,21 @@
+import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import './css/App.css';
+import { useContextAuth } from './context/AuthContext';
 import Dashboard from './pages/Dashboard';
 import Members from './pages/Members';
-import { useContextAuth } from './context/AuthContext';
-import React, { useEffect } from 'react';
-import './css/App.css';
 import Sidebar from './components/sidebar';
-import CssBaseline from '@mui/material/CssBaseline';
-import Trials from './components/Trials';
-import { ThemeProvider, createTheme } from '@mui/material';
 import SnackBar from './components/SnackBar';
+import Trials from './components/Trials';
+import { CssBaseline } from '@mui/material';
+// import ToggleMode from './components/ToggleMode';
 
-const darkTheme = createTheme({
-  palette: {
-    mode: 'dark',
-  },
-});
+
+// const darkTheme = createTheme({
+//   palette: {
+//     mode: 'dark',
+//   },
+// });
 
 const App = () => {
   const { JWT, user } = useContextAuth() // import setJWT if needed
@@ -24,7 +25,8 @@ const App = () => {
 
   return (
     <>
-      <ThemeProvider theme={darkTheme}>
+      {/* <CssVarsProvider> */}
+        {/* <ThemeProvider theme={darkTheme}> */}
         <CssBaseline />
         <Sidebar />
         <Routes>
@@ -32,8 +34,9 @@ const App = () => {
           <Route path="/Members" element={<Members />} />
           <Route path="/Trials" element={<Trials />} />
         </Routes>
-      <SnackBar/>
-      </ThemeProvider>
+        <SnackBar />
+        {/* </ThemeProvider> */}
+      {/* </CssVarsProvider> */}
     </>
   );
 }
