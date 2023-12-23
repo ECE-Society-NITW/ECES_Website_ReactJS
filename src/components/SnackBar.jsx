@@ -3,7 +3,6 @@ import React from 'react'
 import { useContextSnackBar } from '../context/SnackBarContext'
 
 const SnackBar = () => {
-
     const {
         snackBarState,
         setSnackBarState,
@@ -11,19 +10,20 @@ const SnackBar = () => {
         snackBarMessage,
     } = useContextSnackBar()
 
+
     const handleClose = () => {
         setSnackBarState(false)
     }
-    
+
+
     return (
         <Snackbar
-            
             open={snackBarState}
             autoHideDuration={1000}
             onClose={handleClose}
             anchorOrigin={{
-                vertical:'top',
-                horizontal:'center'
+                vertical: 'top',
+                horizontal: 'center'
             }}>
             <Alert onClose={handleClose} severity={snackBarSeverity} sx={{ width: '100%' }}>
                 {snackBarMessage}

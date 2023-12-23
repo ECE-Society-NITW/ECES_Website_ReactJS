@@ -15,6 +15,7 @@ const GoogleAuth = () => {
         NodeJS.POST('/api/users', { credential })
             .then((data) => {
                 setUser(data)
+                // window.location.reload()        
             })
             .catch(err => console.log(err))
     }

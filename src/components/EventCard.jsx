@@ -1,10 +1,13 @@
 import { Card, CardMedia, Chip, Typography, CardContent, CardActions, Button, Box, Stack } from '@mui/material'
 import { Code, LocationOn } from '@mui/icons-material'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import NodeJS from '../utils/NodeJS'
 import { useContextSnackBar } from '../context/SnackBarContext'
 
-const EventCard = ({ data: { event_id, title, description, location, photo } }) => {
+const EventCard = ({ data: { event_id, title, description, location, photo, registeredUsers }, email: { email, JWT } }) => {
+
+    const credential = JWT
+    const [registered,setRegistered] = useState(false)
 
     const {
         setSnackBarState,
@@ -13,20 +16,30 @@ const EventCard = ({ data: { event_id, title, description, location, photo } }) 
     } = useContextSnackBar()
 
     useEffect(() => {
+        const user = registeredUsers.find(user => user.email === email)   
+        if(user)
+            setRegistered(true)
+    }, [registeredUsers,email])
 
-    }, [])
-
-    const register = ()=>{
-        const credential = localStorage.getItem('jwt')
-        NodeJS.POST(`/api/events/register/${event_id}`,{credential})
-              .then(({success,message})=>{
-                  setSnackBarSeverity(success?'success':'info')
-                  setSnackBarMessage(message)
-                  setSnackBarState(true)
-              })
-              .catch(err=>console.log(err=>console.log(err)))
+    const handleClick = () => {
+        const action = registered?'unRegister':'register'
+        if (JWT) {
+            NodeJS.POST(`/api/events/${action}/${event_id}`, { credential })
+                .then(({ success, message }) => {
+                    setSnackBarSeverity(success ? 'success' : 'info')
+                    setSnackBarSeverity(registered?"error":"success")
+                    setSnackBarMessage(message)
+                    setSnackBarState(true)
+                    setRegistered(!registered)
+                })
+                .catch(err => console.log(err => console.log(err)))
+        }
+        else {
+            setSnackBarSeverity('warning')
+            setSnackBarMessage(`Sign in to ${action}`)
+            setSnackBarState(true)
+        }
     }
-
     return (
         <>
             <Card
@@ -54,7 +67,7 @@ const EventCard = ({ data: { event_id, title, description, location, photo } }) 
                     <CardContent
                         sx={{
                             height: '100%',
-                            width: {xs:'300px',md:'700px'}
+                            width: { xs: '300px', md: '700px' }
                         }}>
                         <Stack
                             direction='column'
@@ -72,16 +85,16 @@ const EventCard = ({ data: { event_id, title, description, location, photo } }) 
                                 {description}
                             </Typography>
                             <CardActions>
-                                <Button size="small" variant='contained' onClick={register} >Register</Button>
+                                <Button size="small" variant='contained' disabled={false} onClick={handleClick} >{registered?'UnRegister':'Register'}</Button>
                             </CardActions>
                         </Stack>
                     </CardContent>
                     <CardContent>
                         <Stack direction='column'>
                             <Box>
-                                <Chip icon={<Code />} label="Software"/>
-                                <Chip icon={<LocationOn />} label="TimeSquare"/>
-                                <Chip icon={<Code />} label="Software" variant="outlined"/>
+                                <Chip icon={<Code />} label="Software" />
+                                <Chip icon={<LocationOn />} label="TimeSquare" />
+                                <Chip icon={<Code />} label="Software" variant="outlined" />
                             </Box>
                         </Stack>
                     </CardContent>
