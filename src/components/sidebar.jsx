@@ -72,9 +72,7 @@ const Sidebar = () => {
           </Button>
         </Box>
         <Box margin={3}>
-          <Button startIcon={<GoogleAuth />} variant="outlined">
-            Google Auth
-          </Button>
+          <GoogleAuth />
         </Box>
       </Stack>
     </Menu>
