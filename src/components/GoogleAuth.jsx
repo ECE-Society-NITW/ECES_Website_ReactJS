@@ -33,14 +33,14 @@ const GoogleAuth = () => {
     }
 
     return (
-        <div >
+        <>
             {!JWT && <GoogleLogin
                 onSuccess={handleSuccess}
                 onError={handleFailure}
                 useOneTap
             />}
             {JWT && <Button onClick={handleLogout}>Logout <Logout /></Button>}
-        </div>
+        </>
     )
 }
 

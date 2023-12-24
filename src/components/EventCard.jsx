@@ -7,7 +7,7 @@ import { useContextSnackBar } from '../context/SnackBarContext'
 const EventCard = ({ data: { event_id, title, description, location, photo, registeredUsers }, email: { email, JWT } }) => {
 
     const credential = JWT
-    const [registered,setRegistered] = useState(false)
+    const [registered, setRegistered] = useState(false)
 
     const {
         setSnackBarState,
@@ -15,35 +15,49 @@ const EventCard = ({ data: { event_id, title, description, location, photo, regi
         setSnackBarMessage
     } = useContextSnackBar()
 
-    useEffect(() => {
-        const user = registeredUsers.find(user => user.email === email)   
-        if(user)
-            setRegistered(true)
-    }, [registeredUsers,email])
+    const [loading, setLoading] = useState(false)
 
-    const handleClick = () => {
-        const action = registered?'unRegister':'register'
+    useEffect(() => {
+        const user = registeredUsers.find(user => user.email === email)
+        if (user)
+            setRegistered(true)
+    }, [registeredUsers, email])
+
+    const handleClick = async () => {
+        const action = registered ? 'unRegister' : 'register'
         if (JWT) {
-            NodeJS.POST(`/api/events/${action}/${event_id}`, { credential })
-                .then(({ success, message }) => {
-                    setSnackBarSeverity(success ? 'success' : 'info')
-                    setSnackBarSeverity(registered?"error":"success")
-                    setSnackBarMessage(message)
-                    setSnackBarState(true)
-                    setRegistered(!registered)
-                })
-                .catch(err => console.log(err => console.log(err)))
+            try {
+                setLoading(true)
+                const { success, message } = await NodeJS.POST(`/api/events/${action}/${event_id}`, { credential })
+                setSnackBarSeverity(success ? 'success' : 'info')
+                setSnackBarSeverity(registered ? "error" : "success")
+                setSnackBarMessage(message)
+                setSnackBarState(true)
+                setRegistered(!registered)
+                setLoading(false)
+            }
+            catch (err) {
+                console.log(err)
+            }
         }
         else {
             setSnackBarSeverity('warning')
             setSnackBarMessage(`Sign in to ${action}`)
             setSnackBarState(true)
         }
+        setLoading(false)
     }
     return (
         <>
             <Card
-                sx={{ margin: 'auto', borderRadius: 6 }}>
+                sx={{
+                    margin: 'auto',
+                    borderRadius: 6,
+                    transition: 'transform 0.5s ease',
+                    '&:hover': {
+                        transform: 'scale(1.05)',
+                    }
+                }}>
                 <Stack
                     direction={{ xs: 'column', md: 'row' }}
                     sx={{
@@ -69,15 +83,7 @@ const EventCard = ({ data: { event_id, title, description, location, photo, regi
                             height: '100%',
                             width: { xs: '300px', md: '700px' }
                         }}>
-                        <Stack
-                            direction='column'
-                            sx={{
-                                // height: '10px',
-                                // width:'10px',
-                                // justifyContent: 'space-between',
-                                // backgroundColor:'red'
-                            }}
-                        >
+                        <Stack direction='column'>
                             <Typography gutterBottom variant="h5" color='white' component="div">
                                 {title}
                             </Typography>
@@ -85,7 +91,7 @@ const EventCard = ({ data: { event_id, title, description, location, photo, regi
                                 {description}
                             </Typography>
                             <CardActions>
-                                <Button size="small" variant='contained' disabled={false} onClick={handleClick} >{registered?'UnRegister':'Register'}</Button>
+                                <Button size="small" variant='contained' disabled={loading} onClick={handleClick} >{registered ? 'UnRegister' : 'Register'}</Button>
                             </CardActions>
                         </Stack>
                     </CardContent>

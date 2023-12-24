@@ -4,19 +4,10 @@ import './css/App.css';
 import { useContextAuth } from './context/AuthContext';
 import Dashboard from './pages/Dashboard';
 import Members from './pages/Members';
-import Sidebar from './components/sidebar';
 import SnackBar from './components/SnackBar';
 import Trials from './components/Trials';
 import { CssBaseline } from '@mui/material';
-import ToggleMode from './components/ToggleMode'
-// import ToggleMode from './components/ToggleMode';
-
-
-// const darkTheme = createTheme({
-//   palette: {
-//     mode: 'dark',
-//   },
-// });
+import NavBar from './components/NavBar';
 
 const App = () => {
   const { JWT, user } = useContextAuth()
@@ -26,9 +17,9 @@ const App = () => {
 
   return (
     <>
-        <ToggleMode/>
         <CssBaseline />
-        <Sidebar />
+        {/* <Sidebar /> */}
+        <NavBar/>
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/Members" element={<Members />} />
