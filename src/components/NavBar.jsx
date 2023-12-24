@@ -23,7 +23,7 @@ const Option = (icon, text) => {
                 <Link to={`/${text}`}>
                     <ListItemIcon>
                         {icon}
-                    </ListItemIcon
+                    </ListItemIcon>
                 <ListItemText primary={text} />
                 </Link>
             </ListItemButton>
