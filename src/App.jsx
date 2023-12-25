@@ -13,7 +13,7 @@ const darkTheme = createTheme({
   palette: {
     mode: 'dark'
   }
-});
+})
 
 const App = () => {
   const { JWT, user } = useContextAuth()

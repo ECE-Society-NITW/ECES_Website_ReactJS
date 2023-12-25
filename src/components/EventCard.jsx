@@ -76,6 +76,7 @@ const EventCard = ({ data: { event_id, title, description, location, dateTime, p
                             height: { xs: '300px', md: '250px' },
                             borderRadius: 6,
                             margin: 'auto',
+                            mt:'10px'
                         }}
                         image={photo}
                         title={title}>
