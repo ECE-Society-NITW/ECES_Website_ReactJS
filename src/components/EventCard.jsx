@@ -54,8 +54,9 @@ const EventCard = ({ data: { event_id, title, description, location, photo, regi
                     margin: 'auto',
                     borderRadius: 6,
                     transition: 'transform 0.5s ease',
+                    opacity:0.95,
                     '&:hover': {
-                        transform: 'scale(1.05)',
+                        transform: { xs: ' ', md: 'scale(1.05)' },
                     }
                 }}>
                 <Stack
@@ -73,7 +74,7 @@ const EventCard = ({ data: { event_id, title, description, location, photo, regi
                             width: { xs: '300px', md: '500px' },
                             height: { xs: '240px', md: '250px' },
                             borderRadius: 6,
-                            margin: 'auto'
+                            margin: 'auto',
                         }}
                         image={photo}
                         title={title}>

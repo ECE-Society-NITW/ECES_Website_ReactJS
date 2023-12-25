@@ -1,12 +1,15 @@
 body {
   margin: 0;
-  background-color: #191919; /*Dark gray background color */
+  background-color: #FF0000;
   color: white;
   font-family: 'Poppins', sans-serif;
 }
 
 .App {
   text-align: left;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
 }
 
 .title{

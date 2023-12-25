@@ -5,7 +5,6 @@ import { useContextAuth } from './context/AuthContext';
 import Dashboard from './pages/Dashboard';
 import Members from './pages/Members';
 import SnackBar from './components/SnackBar';
-import Trials from './components/Trials';
 import { CssBaseline } from '@mui/material';
 import NavBar from './components/NavBar';
 
@@ -18,12 +17,10 @@ const App = () => {
   return (
     <>
         <CssBaseline />
-        {/* <Sidebar /> */}
         <NavBar/>
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/Members" element={<Members />} />
-          <Route path="/Trials" element={<Trials />} />
         </Routes>
         <SnackBar />
     </>
