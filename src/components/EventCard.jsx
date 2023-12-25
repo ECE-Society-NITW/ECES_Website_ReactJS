@@ -5,6 +5,16 @@ import NodeJS from '../utils/NodeJS'
 import { useContextSnackBar } from '../context/SnackBarContext'
 import '../css/App.css'
 
+function getFmtDate(date) {
+    const day = date.getDate();
+    const suffixes = ['th', 'st', 'nd', 'rd'];
+    const v = day % 100;
+    const f1 =  day + (suffixes[(v - 20) % 10] || suffixes[v] || suffixes[0]);
+    return `${f1} ${date.toLocaleString('en-US', {
+        month: 'short',
+        timeZone: 'UTC', // Adjust the time zone as needed
+    })}`;
+}
 const EventCard = ({ data: { event_id, title, description, location, dateTime, photo, registeredUsers }, email: { email, JWT } }) => {
 
     const credential = JWT
@@ -94,9 +104,21 @@ const EventCard = ({ data: { event_id, title, description, location, dateTime, p
                                 {description}
                             </Typography>
                             <Box><Chip variant='outlined' sx={{ borderRadius: '4px', mr: '5px', mt: '5px' }} label={location} icon={<LocationOnRounded />} /></Box>
-                            <Box><Chip variant='outlined' sx={{ borderRadius: '4px', mr: '5px', mt: '5px' }} label={'30th Jan'} icon={<EventAvailableRounded />} /><Chip sx={{ borderRadius: '4px', mr: '5px', mt: '5px' }} label={"4:00 PM"} icon={<AccessTimeRounded />} /></Box>
+                            <Box><Chip variant='outlined' sx={{ borderRadius: '4px', mr: '5px', mt: '5px' }} label={getFmtDate(new Date(dateTime))} icon={<EventAvailableRounded />} /><Chip sx={{ borderRadius: '4px', mr: '5px', mt: '5px' }} label={
+                                new Date(dateTime).toLocaleString('en-US', {
+                                    hour: 'numeric',
+                                    minute: 'numeric',
+                                    hour12: true, // Use 12-hour clock format
+                                    timeZone: 'UTC', // Adjust the time zone as needed
+                                })} icon={<AccessTimeRounded />}
+                            /></Box>
                             <CardActions>
-                                <Button className='NeonButton' size="small" variant='contained' disabled={loading} onClick={handleClick}>{registered ? 'UnRegister' : 'Register'}</Button>
+                                {(new Date()) > (new Date(dateTime)) ? 
+                                    <Button className='NeonButton' size="small" variant='contained' disabled={loading} onClick={() => alert("not implemented!")}>{'Feedback'}</Button>
+                                    :
+                                    <Button className='NeonButton' size="small" variant='contained' disabled={loading} onClick={handleClick}>{registered ? 'UnRegister' : 'Register'}</Button>
+
+                                }
                             </CardActions>
                         </Stack>
                     </CardContent>
