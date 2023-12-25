@@ -18,11 +18,10 @@ const Events = () => {
     return (
         <div>
             <Stack direction='row' flexWrap='wrap' gap={2}>
-                {events.map(event => {
-                    return (<>
-                        <EventCard data={event} email={{ email:user.email, JWT }} />
-                    </>)
-                })}
+                {events.map((event, i) =>
+                    <EventCard key={i} data={event} email={{ email: user.email, JWT }} />
+
+                )}
             </Stack>
         </div>
     )
