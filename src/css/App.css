@@ -1,83 +1,27 @@
 body {
   margin: 0;
-  background-color: #FF0000;
   color: white;
   font-family: 'Poppins', sans-serif;
+  background-color: black;
 }
 
-.App {
-  text-align: left;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-}
-
-.title{
+.title {
   margin-left: 100px;
   margin-top: 30px;
   font-size: 2.5rem;
   font-weight: 800;
 }
 
-.sidebar{
-  position: fixed;
-  left: 0;
-  top: 0;
-  bottom: 0;
-}
-
-.event-container{
-  display: flex;
-  overflow-x: auto;
-  white-space: nowrap;
-  justify-content: space-between;
-  margin-top: 30px;
-  margin-left: 90px;
-}
-.event-container > * {
-  margin-right: 15px;   
-}
-.event-container::-webkit-scrollbar {
-  display: none;
-}
-
-.title-2{
+.title-2 {
   margin-left: 100px;
   margin-top: 20px;
   font-size: 1.5rem;
   color: #dadada;
 }
 
-.event-cat-container{
-  display: flex;
-  overflow-x: auto;
-  overflow-y: hidden;
-  height: 200px;
-  margin-left: 380px;
-}
-.event-cat-container > * {
-  margin-right: 15px;
-}
-.event-cat-container::-webkit-scrollbar {
-  display: none;
-}
-
-.title-3{
+.title-3 {
   margin-left: 100px;
   margin-top: 10px;
   font-size: 1.5rem;
   color: #dadada;
-}
-
-.prev-event-cat{
-  display: flex;
-  overflow-x: auto;
-  white-space: nowrap;
-  justify-content: space-between;
-  margin-top: 30px;
-  margin-left: 90px;
-  margin-bottom: 30px;
-}
-.prev-event-cat > * {
-  margin-right: 15px;   
 }

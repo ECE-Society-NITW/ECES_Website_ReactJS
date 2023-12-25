@@ -5,8 +5,15 @@ import { useContextAuth } from './context/AuthContext';
 import Dashboard from './pages/Dashboard';
 import Members from './pages/Members';
 import SnackBar from './components/SnackBar';
-import { CssBaseline } from '@mui/material';
 import NavBar from './components/NavBar';
+import { ThemeProvider } from '@emotion/react';
+import { createTheme } from '@mui/material';
+
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark'
+  }
+});
 
 const App = () => {
   const { JWT, user } = useContextAuth()
@@ -16,13 +23,14 @@ const App = () => {
 
   return (
     <>
-        <CssBaseline />
-        <NavBar/>
+      <ThemeProvider theme={darkTheme}>
+        <NavBar />
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/Members" element={<Members />} />
         </Routes>
         <SnackBar />
+      </ThemeProvider>
     </>
   );
 }

@@ -1,10 +1,11 @@
 import { Card, CardMedia, Chip, Typography, CardContent, CardActions, Button, Box, Stack } from '@mui/material'
-import { Code, LocationOn } from '@mui/icons-material'
+import { AccessTimeRounded, EventAvailableRounded, LocationOnRounded } from '@mui/icons-material'
 import React, { useEffect, useState } from 'react'
 import NodeJS from '../utils/NodeJS'
 import { useContextSnackBar } from '../context/SnackBarContext'
+import '../css/App.css'
 
-const EventCard = ({ data: { event_id, title, description, location, photo, registeredUsers }, email: { email, JWT } }) => {
+const EventCard = ({ data: { event_id, title, description, location, dateTime, photo, registeredUsers }, email: { email, JWT } }) => {
 
     const credential = JWT
     const [registered, setRegistered] = useState(false)
@@ -53,10 +54,10 @@ const EventCard = ({ data: { event_id, title, description, location, photo, regi
                 sx={{
                     margin: 'auto',
                     borderRadius: 6,
-                    transition: 'transform 0.5s ease',
-                    opacity:0.95,
+                    transition: 'all 0.5s ease',
+                    opacity: 0.95,
                     '&:hover': {
-                        transform: { xs: ' ', md: 'scale(1.05)' },
+                        boxShadow: '0 0 5px #FF72CA, 0 0 10px #FF72CA, 0 0 15px #FF72CA',
                     }
                 }}>
                 <Stack
@@ -72,7 +73,7 @@ const EventCard = ({ data: { event_id, title, description, location, photo, regi
                     <CardMedia
                         sx={{
                             width: { xs: '300px', md: '500px' },
-                            height: { xs: '240px', md: '250px' },
+                            height: { xs: '300px', md: '250px' },
                             borderRadius: 6,
                             margin: 'auto',
                         }}
@@ -91,18 +92,11 @@ const EventCard = ({ data: { event_id, title, description, location, photo, regi
                             <Typography variant="body2" color="white">
                                 {description}
                             </Typography>
+                            <Box><Chip variant='outlined' sx={{ borderRadius: '4px', mr: '5px', mt: '5px' }} label={location} icon={<LocationOnRounded />} /></Box>
+                            <Box><Chip variant='outlined' sx={{ borderRadius: '4px', mr: '5px', mt: '5px' }} label={'30th Jan'} icon={<EventAvailableRounded />} /><Chip sx={{ borderRadius: '4px', mr: '5px', mt: '5px' }} label={"4:00 PM"} icon={<AccessTimeRounded />} /></Box>
                             <CardActions>
-                                <Button size="small" variant='contained' disabled={loading} onClick={handleClick} >{registered ? 'UnRegister' : 'Register'}</Button>
+                                <Button className='NeonButton' size="small" variant='contained' disabled={loading} onClick={handleClick}>{registered ? 'UnRegister' : 'Register'}</Button>
                             </CardActions>
-                        </Stack>
-                    </CardContent>
-                    <CardContent>
-                        <Stack direction='column'>
-                            <Box>
-                                <Chip icon={<Code />} label="Software" />
-                                <Chip icon={<LocationOn />} label="TimeSquare" />
-                                <Chip icon={<Code />} label="Software" variant="outlined" />
-                            </Box>
                         </Stack>
                     </CardContent>
                 </Stack>

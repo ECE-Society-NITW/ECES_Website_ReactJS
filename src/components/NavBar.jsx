@@ -1,20 +1,17 @@
 import React, { useState } from 'react'
-import '../css/nav.css'
 import GoogleAuth from './GoogleAuth'
 import { useContextAuth } from '../context/AuthContext'
-import { useContextMode } from '../context/ModeContext'
 import { Menu, Toolbar, Box, AppBar, IconButton, Typography, ListItemText, Container, Avatar, Button, Tooltip, MenuItem, SwipeableDrawer, ListItem, ListItemButton, List, ListItemIcon, Divider, Stack } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
 import EventAvailableIcon from '@mui/icons-material/EventAvailable';
 import PeopleIcon from '@mui/icons-material/People'
+import ShareIcon from '@mui/icons-material/Share'
 import LogoutIcon from '@mui/icons-material/Logout'
 import HomeIcon from '@mui/icons-material/Home';
-import DarkModeIcon from '@mui/icons-material/DarkMode'
 import { Link } from 'react-router-dom'
 
 const pages = ['Products', 'Pricing', 'Blog']
 const settings = ['Home', 'Members', 'Events', 'Logout']
-const icons = [<HomeIcon />, <PeopleIcon />, <EventAvailableIcon />, <LogoutIcon />]
 
 const Option = (icon, text) => {
     return (
@@ -33,7 +30,6 @@ const Option = (icon, text) => {
 const NavBar = () => {
     const [anchorElUser, setAnchorElUser] = useState(null)
     const [drawerState, setDrawerState] = useState(false)
-    const { mode, setMode } = useContextMode()
     const { user } = useContextAuth()
 
     const handleOpenUserMenu = (event) => {
@@ -42,14 +38,6 @@ const NavBar = () => {
 
     const handleCloseUserMenu = () => {
         setAnchorElUser(null)
-    }
-
-    const toggleMode = () => {
-        if (mode === 'light') {
-            setMode('dark');
-        } else {
-            setMode('light');
-        }
     }
 
     return (
@@ -84,21 +72,27 @@ const NavBar = () => {
                                 backgroundColor: 'rgba(40,40,40,0)',
                             }}>
                             <Box>
-                                <Stack direction='column' justifyContent='space-evenly' alignItems='center' sx={{ width: 250,height:170,mt:'20px' }}>
+                                <Stack direction='column' justifyContent='space-evenly' alignItems='center' sx={{ width: 250, height: 170, mt: '20px' }}>
                                     <Avatar sx={{ height: 100, width: 100 }} src={user.picture} />
-                                    <Typography variant='h6'>{user.name?user.name:"Jane Doe"}</Typography>
-                                    <Typography variant='caption'>{user.email?user.email:"janedoe@gmail.com"}</Typography>
+                                    <Typography variant='h6'>{user.name ? user.name : "Jane Doe"}</Typography>
+                                    <Typography variant='caption'>{user.email ? user.email : "janedoe@gmail.com"}</Typography>
                                 </Stack>
                             </Box>
                             <Divider />
                             <Box sx={{ width: 250 }} role="presentation">
                                 <List>
-                                    {settings.map((text, index) => (
-                                        Option(icons[index], text)
-                                    ))}
+                                    {Option(<HomeIcon />, "Home")}
+                                    {Option(<PeopleIcon />, "Members")}
+                                    {Option(<EventAvailableIcon />, "Events")}
+                                    {Option(<LogoutIcon />, "Logout")}
                                 </List>
                             </Box>
-                            <Divider/>
+                            <Divider />
+                            <Box sx={{ width: 250 }} role="presentation">
+                                <List>
+                                    {Option(<ShareIcon />, "Invite Friends")}
+                                </List>
+                            </Box>
                         </SwipeableDrawer>
                     </Box>
                     <Typography
@@ -130,7 +124,6 @@ const NavBar = () => {
                         ))}
                     </Box>
                     <Box sx={{ flexGrow: 0 }}>
-                        <IconButton sx={{ ml: '-40px' }} size="large" aria-label="account of current user" aria-controls="menu-appbar" aria-haspopup="true" onClick={toggleMode} color="inherit"><DarkModeIcon /></IconButton>
                         <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                                 <Avatar alt="Remy Sharp" src={`${user.picture}`} />
