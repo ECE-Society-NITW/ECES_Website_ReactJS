@@ -1,131 +1,211 @@
-import { Card, CardMedia, Chip, Typography, CardContent, CardActions, Button, Box, Stack } from '@mui/material'
-import { AccessTimeRounded, EventAvailableRounded, LocationOnRounded } from '@mui/icons-material'
-import React, { useEffect, useState } from 'react'
-import NodeJS from '../utils/NodeJS'
-import { useContextSnackBar } from '../context/SnackBarContext'
-import '../css/App.css'
+import {
+  Card,
+  CardMedia,
+  Chip,
+  Typography,
+  CardContent,
+  CardActions,
+  Button,
+  Box,
+  Stack,
+} from "@mui/material";
+import {
+  AccessTimeRounded,
+  EventAvailableRounded,
+  LocationOnRounded,
+} from "@mui/icons-material";
+import React, { useEffect, useState } from "react";
+import NodeJS from "../utils/NodeJS";
+import { useContextSnackBar } from "../context/SnackBarContext";
+import "../css/App.css";
+import FeedbackDialog from "./FeedbackDialog";
 
 function getFmtDate(date) {
-    const day = date.getDate();
-    const suffixes = ['th', 'st', 'nd', 'rd'];
-    const v = day % 100;
-    const f1 =  day + (suffixes[(v - 20) % 10] || suffixes[v] || suffixes[0]);
-    return `${f1} ${date.toLocaleString('en-US', {
-        month: 'short',
-        timeZone: 'UTC', // Adjust the time zone as needed
-    })}`;
+  const day = date.getDate();
+  const suffixes = ["th", "st", "nd", "rd"];
+  const v = day % 100;
+  const f1 = day + (suffixes[(v - 20) % 10] || suffixes[v] || suffixes[0]);
+  return `${f1} ${date.toLocaleString("en-US", {
+    month: "short",
+    timeZone: "UTC", // Adjust the time zone as needed
+  })}`;
 }
-const EventCard = ({ data: { event_id, title, description, location, dateTime, photo, registeredUsers }, email: { email, JWT } }) => {
+const EventCard = ({
+  data: {
+    event_id,
+    title,
+    description,
+    location,
+    dateTime,
+    photo,
+    registeredUsers,
+    feedback,
+  },
+  email: { email, JWT },
+}) => {
+  const credential = JWT;
+  const [registered, setRegistered] = useState(false);
+  const [fbDone, setFbDone] = useState(false);
+  const { setSnackBarState, setSnackBarSeverity, setSnackBarMessage } =
+    useContextSnackBar();
 
-    const credential = JWT
-    const [registered, setRegistered] = useState(false)
+  const [loading, setLoading] = useState(false);
+  const [fbOpen, setFbOpen] = useState(false);
 
-    const {
-        setSnackBarState,
-        setSnackBarSeverity,
-        setSnackBarMessage
-    } = useContextSnackBar()
+  useEffect(() => {
+    const user = registeredUsers.find((user) => user.email === email);
+    if (user) setRegistered(true);
+    if (feedback && feedback.find((user) => user.email === email))
+      setFbDone(true) && console.log(feedback);
+  }, [registeredUsers, email, feedback]);
 
-    const [loading, setLoading] = useState(false)
-
-    useEffect(() => {
-        const user = registeredUsers.find(user => user.email === email)
-        if (user)
-            setRegistered(true)
-    }, [registeredUsers, email])
-
-    const handleClick = async () => {
-        const action = registered ? 'unRegister' : 'register'
-        if (JWT) {
-            try {
-                setLoading(true)
-                const { success, message } = await NodeJS.POST(`/api/events/${action}/${event_id}`, { credential })
-                setSnackBarSeverity(success ? 'success' : 'info')
-                setSnackBarSeverity(registered ? "error" : "success")
-                setSnackBarMessage(message)
-                setSnackBarState(true)
-                setRegistered(!registered)
-                setLoading(false)
-            }
-            catch (err) {
-                console.log(err)
-            }
-        }
-        else {
-            setSnackBarSeverity('warning')
-            setSnackBarMessage(`Sign in to ${action}`)
-            setSnackBarState(true)
-        }
-        setLoading(false)
+  const handleClick = async () => {
+    const action = registered ? "unRegister" : "register";
+    if (JWT) {
+      try {
+        setLoading(true);
+        const { success, message } = await NodeJS.POST(
+          `/api/events/${action}/${event_id}`,
+          { credential }
+        );
+        setSnackBarSeverity(success ? "success" : "info");
+        setSnackBarSeverity(registered ? "error" : "success");
+        setSnackBarMessage(message);
+        setSnackBarState(true);
+        setRegistered(!registered);
+        setLoading(false);
+      } catch (err) {
+        console.log(err);
+      }
+    } else {
+      setSnackBarSeverity("warning");
+      setSnackBarMessage(`Sign in to ${action}`);
+      setSnackBarState(true);
     }
-    return (
-        <>
-            <Card
-                sx={{
-                    margin: 'auto',
-                    borderRadius: 6,
-                    transition: 'all 0.5s ease',
-                    opacity: 0.95,
-                    '&:hover': {
-                        boxShadow: '0 0 5px #FF72CA, 0 0 10px #FF72CA, 0 0 15px #FF72CA',
-                    }
-                }}>
-                <Stack
-                    direction={{ xs: 'column', md: 'row' }}
-                    sx={{
-                        width: { xs: '320px', md: '1000px' },
-                        minHeight: { xs: '0px', md: '270px' },
-                        padding: { xs: '7px', md: '10px' },
-                        backgroundColor: '#282828'
-                    }}
-                    justifyContent='center'
-                >
-                    <CardMedia
-                        sx={{
-                            width: { xs: '300px', md: '500px' },
-                            height: { xs: '300px', md: '250px' },
-                            borderRadius: 6,
-                            margin: 'auto',
-                            mt:'10px'
-                        }}
-                        image={photo}
-                        title={title}>
-                    </CardMedia>
-                    <CardContent
-                        sx={{
-                            height: '100%',
-                            width: { xs: '300px', md: '700px' }
-                        }}>
-                        <Stack direction='column'>
-                            <Typography gutterBottom variant="h5" color='white' component="div">
-                                {title}
-                            </Typography>
-                            <Typography variant="body2" color="white">
-                                {description}
-                            </Typography>
-                            <Box><Chip variant='outlined' sx={{ borderRadius: '4px', mr: '5px', mt: '5px' }} label={location} icon={<LocationOnRounded />} /></Box>
-                            <Box><Chip variant='outlined' sx={{ borderRadius: '4px', mr: '5px', mt: '5px' }} label={getFmtDate(new Date(dateTime))} icon={<EventAvailableRounded />} /><Chip sx={{ borderRadius: '4px', mr: '5px', mt: '5px' }} label={
-                                new Date(dateTime).toLocaleString('en-US', {
-                                    hour: 'numeric',
-                                    minute: 'numeric',
-                                    hour12: true, // Use 12-hour clock format
-                                    timeZone: 'UTC', // Adjust the time zone as needed
-                                })} icon={<AccessTimeRounded />}
-                            /></Box>
-                            <CardActions>
-                                {(new Date()) > (new Date(dateTime)) ? 
-                                    <Button className='NeonButton' size="small" variant='contained' disabled={loading} onClick={() => alert("not implemented!")}>{'Feedback'}</Button>
-                                    :
-                                    <Button className='NeonButton' size="small" variant='contained' disabled={loading} onClick={handleClick}>{registered ? 'UnRegister' : 'Register'}</Button>
+    setLoading(false);
+  };
+  return (
+    <>
+      <Card
+        sx={{
+          margin: "auto",
+          borderRadius: 6,
+          transition: "all 0.5s ease",
+          opacity: 0.95,
+          "&:hover": {
+            boxShadow: "0 0 5px #FF72CA, 0 0 10px #FF72CA, 0 0 15px #FF72CA",
+          },
+        }}
+      >
+        <Stack
+          direction={{ xs: "column", md: "row" }}
+          sx={{
+            width: { xs: "320px", md: "1000px" },
+            minHeight: { xs: "0px", md: "270px" },
+            padding: { xs: "7px", md: "10px" },
+            backgroundColor: "#282828",
+          }}
+          justifyContent="center"
+        >
+          <CardMedia
+            sx={{
+              width: { xs: "300px", md: "500px" },
+              height: { xs: "300px", md: "250px" },
+              borderRadius: 6,
+              margin: "auto",
+              mt: "10px",
+            }}
+            image={photo}
+            title={title}
+          ></CardMedia>
+          <CardContent
+            sx={{
+              height: "100%",
+              width: { xs: "300px", md: "700px" },
+            }}
+          >
+            <Stack direction="column">
+              <Typography
+                gutterBottom
+                variant="h5"
+                color="white"
+                component="div"
+              >
+                {title}
+              </Typography>
+              <Typography variant="body2" color="white">
+                {description}
+              </Typography>
+              <Box>
+                <Chip
+                  variant="outlined"
+                  sx={{ borderRadius: "4px", mr: "5px", mt: "5px" }}
+                  label={location}
+                  icon={<LocationOnRounded />}
+                />
+              </Box>
+              <Box>
+                <Chip
+                  variant="outlined"
+                  sx={{ borderRadius: "4px", mr: "5px", mt: "5px" }}
+                  label={getFmtDate(new Date(dateTime))}
+                  icon={<EventAvailableRounded />}
+                />
+                <Chip
+                  sx={{ borderRadius: "4px", mr: "5px", mt: "5px" }}
+                  label={new Date(dateTime).toLocaleString("en-US", {
+                    hour: "numeric",
+                    minute: "numeric",
+                    hour12: true, // Use 12-hour clock format
+                    timeZone: "UTC", // Adjust the time zone as needed
+                  })}
+                  icon={<AccessTimeRounded />}
+                />
+              </Box>
+              <CardActions>
+                {new Date() > new Date(dateTime) ? (
+                  <>
+                    <Button
+                      className="NeonButton"
+                      size="small"
+                      variant="contained"
+                      disabled={fbDone || loading}
+                      onClick={() => setFbOpen(true)}
+                    >
+                      {!fbDone ? "Submit Feedback" : "Feedback submitted"}
+                    </Button>
+                    <FeedbackDialog
+                      open={fbOpen}
+                      onClose={() => setFbOpen(false)}
+                      {...{
+                        event_id,
+                        JWT,
+                        setSnackBarState,
+                        setSnackBarSeverity,
+                        setSnackBarMessage,
+                        setLoading,
+                        setFbDone,
+                      }}
+                    />
+                  </>
+                ) : (
+                  <Button
+                    className="NeonButton"
+                    size="small"
+                    variant="contained"
+                    disabled={loading}
+                    onClick={handleClick}
+                  >
+                    {registered ? "UnRegister" : "Register"}
+                  </Button>
+                )}
+              </CardActions>
+            </Stack>
+          </CardContent>
+        </Stack>
+      </Card>
+    </>
+  );
+};
 
-                                }
-                            </CardActions>
-                        </Stack>
-                    </CardContent>
-                </Stack>
-            </Card>
-        </>
-    )
-}
-
-export default EventCard
+export default EventCard;
