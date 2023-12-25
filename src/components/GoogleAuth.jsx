@@ -39,7 +39,7 @@ const GoogleAuth = () => {
                 onSuccess={handleSuccess}
                 onError={handleFailure}
                 useOneTap
-            /> : <Button startIcon={<Logout />} variant="outlined" marginBottom={2} onClick={handleLogout}>Logout </Button>}
+            /> : <Button startIcon={<Logout />} variant="outlined" onClick={handleLogout}>Logout </Button>}
         </>
     )
 }

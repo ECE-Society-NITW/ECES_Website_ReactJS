@@ -66,7 +66,7 @@ const NavBar = () => {
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                         <IconButton size="large" aria-label="account of current user" aria-controls="menu-appbar" aria-haspopup="true" onClick={() => { setDrawerState(true) }} color="inherit"><MenuIcon /></IconButton>
-                        <SwipeableDrawer anchor={'left'} open={drawerState} onClick={() => { setDrawerState(false) }}
+                        <SwipeableDrawer anchor={'left'} open={drawerState} onClick={() => { setDrawerState(false) }} onClose={() => { setDrawerState(false) }} onOpen={() => { setDrawerState(true) }}
                             sx={{
                                 backdropFilter: 'blur(3px)',
                                 backgroundColor: 'rgba(40,40,40,0)',
