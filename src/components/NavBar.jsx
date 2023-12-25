@@ -3,7 +3,7 @@ import '../css/nav.css'
 import GoogleAuth from './GoogleAuth'
 import { useContextAuth } from '../context/AuthContext'
 import { useContextMode } from '../context/ModeContext'
-import { Menu, Toolbar, Box, AppBar, IconButton, Typography, ListItemText, Container, Avatar, Button, Tooltip, MenuItem, SwipeableDrawer, ListItem, ListItemButton, List, ListItemIcon } from '@mui/material'
+import { Menu, Toolbar, Box, AppBar, IconButton, Typography, ListItemText, Container, Avatar, Button, Tooltip, MenuItem, SwipeableDrawer, ListItem, ListItemButton, List, ListItemIcon, Divider, Stack } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
 import EventAvailableIcon from '@mui/icons-material/EventAvailable';
 import PeopleIcon from '@mui/icons-material/People'
@@ -24,7 +24,7 @@ const Option = (icon, text) => {
                     <ListItemIcon>
                         {icon}
                     </ListItemIcon>
-                </Link>                    
+                </Link>
                 <ListItemText primary={text} />
             </ListItemButton>
         </ListItem>)
@@ -83,6 +83,14 @@ const NavBar = () => {
                                 backdropFilter: 'blur(3px)',
                                 backgroundColor: 'rgba(40,40,40,0)',
                             }}>
+                            <Box>
+                                <Stack direction='column' justifyContent='space-evenly' alignItems='center' sx={{ width: 250,height:170,mt:'20px' }}>
+                                    <Avatar sx={{ height: 100, width: 100 }} src={user.picture} />
+                                    <Typography variant='h6'>{user.name?user.name:"Jane Doe"}</Typography>
+                                    <Typography variant='caption'>{user.email?user.email:"janedoe@gmail.com"}</Typography>
+                                </Stack>
+                            </Box>
+                            <Divider />
                             <Box sx={{ width: 250 }} role="presentation">
                                 <List>
                                     {settings.map((text, index) => (
@@ -90,6 +98,7 @@ const NavBar = () => {
                                     ))}
                                 </List>
                             </Box>
+                            <Divider/>
                         </SwipeableDrawer>
                     </Box>
                     <Typography
