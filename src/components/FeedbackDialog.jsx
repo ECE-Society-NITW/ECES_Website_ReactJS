@@ -29,16 +29,23 @@ const FeedbackDialog = ({
 
 	const handleFeedbackSubmit = async () => {
 		setLoading(true);
-    const { success, message } = await NodeJS.POST(
-      `/api/events/feedBack/${event_id}`,
-      { credential: JWT }
-    );
-    setSnackBarSeverity(success ? "success" : "info");
-    setSnackBarMessage(message);
-    setSnackBarState(true);
-    setFbDone(true);
-    setLoading(false);
-    onClose();
+    try{
+      const { success, message } = await NodeJS.POST(
+        `/api/events/feedBack/${event_id}`,
+        { credential: JWT ,comments,rating}
+        );
+        setSnackBarSeverity(success ? "success" : "info");
+        setSnackBarMessage(message);
+        setSnackBarState(true);
+        setFbDone(true);
+        setLoading(false);
+      }
+    catch(err){
+      console.log(err)
+    } finally {
+      setLoading(false);
+      onClose();
+    }
   };
 
   const handleCommentsChange = (event) => {

@@ -8,82 +8,69 @@ import {
   Button,
   Box,
   Stack,
-} from "@mui/material";
+} from "@mui/material"
 import {
   AccessTimeRounded,
   EventAvailableRounded,
   LocationOnRounded,
-} from "@mui/icons-material";
-import React, { useEffect, useState } from "react";
-import NodeJS from "../utils/NodeJS";
-import { useContextSnackBar } from "../context/SnackBarContext";
-import "../css/App.css";
-import FeedbackDialog from "./FeedbackDialog";
+} from "@mui/icons-material"
+import React, { useEffect, useState } from "react"
+import NodeJS from "../utils/NodeJS"
+import { useContextSnackBar } from "../context/SnackBarContext"
+import "../css/App.css"
+import FeedbackDialog from "./FeedbackDialog"
 
 function getFmtDate(date) {
-  const day = date.getDate();
-  const suffixes = ["th", "st", "nd", "rd"];
-  const v = day % 100;
-  const f1 = day + (suffixes[(v - 20) % 10] || suffixes[v] || suffixes[0]);
+  const day = date.getDate()
+  const suffixes = ["th", "st", "nd", "rd"]
+  const v = day % 100
+  const f1 = day + (suffixes[(v - 20) % 10] || suffixes[v] || suffixes[0])
   return `${f1} ${date.toLocaleString("en-US", {
     month: "short",
     timeZone: "UTC", // Adjust the time zone as needed
-  })}`;
+  })}`
 }
-const EventCard = ({
-  data: {
-    event_id,
-    title,
-    description,
-    location,
-    dateTime,
-    photo,
-    registeredUsers,
-    feedback,
-  },
-  email: { email, JWT },
-}) => {
-  const credential = JWT;
-  const [registered, setRegistered] = useState(false);
-  const [fbDone, setFbDone] = useState(false);
-  const { setSnackBarState, setSnackBarSeverity, setSnackBarMessage } =
-    useContextSnackBar();
+const EventCard = ({ data: { event_id, title, description, location, dateTime, photo, registeredUsers, feedbacks }, email: { email, JWT } }) => {
 
-  const [loading, setLoading] = useState(false);
-  const [fbOpen, setFbOpen] = useState(false);
+  const credential = JWT
+  const [registered, setRegistered] = useState(false)
+  const [fbDone, setFbDone] = useState(false)
+  const { setSnackBarState, setSnackBarSeverity, setSnackBarMessage } = useContextSnackBar()
+  const [loading, setLoading] = useState(false)
+  const [fbOpen, setFbOpen] = useState(false)
 
   useEffect(() => {
-    const user = registeredUsers.find((user) => user.email === email);
-    if (user) setRegistered(true);
-    if (feedback && feedback.find((user) => user.email === email))
-      setFbDone(true) && console.log(feedback);
-  }, [registeredUsers, email, feedback]);
+    const user = registeredUsers.find((user) => user.email === email)
+    if (user) setRegistered(true)
+    if (feedbacks && feedbacks.find((user) => user.email === email))
+      setFbDone(true) && console.log(feedbacks)
+  }, [registeredUsers, email, feedbacks])
 
   const handleClick = async () => {
-    const action = registered ? "unRegister" : "register";
+    const action = registered ? "unRegister" : "register"
     if (JWT) {
       try {
-        setLoading(true);
+        setLoading(true)
         const { success, message } = await NodeJS.POST(
           `/api/events/${action}/${event_id}`,
           { credential }
-        );
-        setSnackBarSeverity(success ? "success" : "info");
-        setSnackBarSeverity(registered ? "error" : "success");
-        setSnackBarMessage(message);
-        setSnackBarState(true);
-        setRegistered(!registered);
-        setLoading(false);
+        )
+        setSnackBarSeverity(success ? "success" : "info")
+        setSnackBarSeverity(registered ? "error" : "success")
+        setSnackBarMessage(message)
+        setSnackBarState(true)
+        setRegistered(!registered)
+        setLoading(false)
       } catch (err) {
-        console.log(err);
+        console.log(err)
       }
     } else {
-      setSnackBarSeverity("warning");
-      setSnackBarMessage(`Sign in to ${action}`);
-      setSnackBarState(true);
+      setSnackBarSeverity("warning")
+      setSnackBarMessage(`Sign in to ${action}`)
+      setSnackBarState(true)
     }
-    setLoading(false);
-  };
+    setLoading(false)
+  }
   return (
     <>
       <Card
@@ -205,7 +192,7 @@ const EventCard = ({
         </Stack>
       </Card>
     </>
-  );
-};
+  )
+}
 
-export default EventCard;
+export default EventCard
