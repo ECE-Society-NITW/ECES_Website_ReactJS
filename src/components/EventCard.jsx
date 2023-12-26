@@ -33,7 +33,7 @@ function getFmtDate(date) {
 }
 
 const EventCard = ({
-  data: { 
+  data: {
     event_id,
     title,
     description,
