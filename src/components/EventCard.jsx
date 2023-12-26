@@ -18,7 +18,8 @@ import React, { useEffect, useState } from "react"
 import NodeJS from "../utils/NodeJS"
 import { useContextSnackBar } from "../context/SnackBarContext"
 import "../css/App.css"
-import FeedbackDialog from "./FeedbackDialog"
+import FeedbackDialog from "./miscellaneous/FeedbackDialog"
+import TeammatesDialog from "./miscellaneous/RegistrationDialog"
 
 function getFmtDate(date) {
   const day = date.getDate()
@@ -27,10 +28,25 @@ function getFmtDate(date) {
   const f1 = day + (suffixes[(v - 20) % 10] || suffixes[v] || suffixes[0])
   return `${f1} ${date.toLocaleString("en-US", {
     month: "short",
-    timeZone: "UTC", // Adjust the time zone as needed
+    timeZone: "UTC",
   })}`
 }
-const EventCard = ({ data: { event_id, title, description, location, dateTime, photo, registeredUsers, feedbacks }, email: { email, JWT } }) => {
+
+const EventCard = ({
+  data: { 
+    event_id,
+    title,
+    description,
+    location,
+    dateTime,
+    photo,
+    registeredUsers,
+    numberOfTeammates,
+    feedbacks },
+  email: {
+    email,
+    JWT }
+}) => {
 
   const credential = JWT
   const [registered, setRegistered] = useState(false)
@@ -38,39 +54,47 @@ const EventCard = ({ data: { event_id, title, description, location, dateTime, p
   const { setSnackBarState, setSnackBarSeverity, setSnackBarMessage } = useContextSnackBar()
   const [loading, setLoading] = useState(false)
   const [fbOpen, setFbOpen] = useState(false)
+  const [tmOpen, setTmOpen] = useState(false)
+  const [teammates, setTeammates] = useState(Array(numberOfTeammates).fill(""))
 
   useEffect(() => {
     const user = registeredUsers.find((user) => user.email === email)
     if (user) setRegistered(true)
-    if (feedbacks && feedbacks.find((user) => user.email === email))
-      setFbDone(true) && console.log(feedbacks)
+    if (feedbacks && feedbacks.find((user) => user.email === email)) setFbDone(true)
   }, [registeredUsers, email, feedbacks])
 
   const handleClick = async () => {
     const action = registered ? "unRegister" : "register"
-    if (JWT) {
+    if (!JWT) {
+      setSnackBarSeverity("warning")
+      setSnackBarMessage(`Sign in to ${action}`)
+      setSnackBarState(true)
+      return
+    }
+    if (numberOfTeammates > 0 && !tmOpen && !registered) {
+      setTmOpen(true)
+      return
+    }
+    if (numberOfTeammates === 0 || tmOpen || registered) {
       try {
         setLoading(true)
-        const { success, message } = await NodeJS.POST(
-          `/api/events/${action}/${event_id}`,
-          { credential }
-        )
+        const { success, message } = await NodeJS.POST(`/api/events/${action}/${event_id}`, {
+          credential,
+          teammates,
+        })
         setSnackBarSeverity(success ? "success" : "info")
         setSnackBarSeverity(registered ? "error" : "success")
         setSnackBarMessage(message)
         setSnackBarState(true)
         setRegistered(!registered)
-        setLoading(false)
       } catch (err) {
         console.log(err)
+      } finally {
+        setLoading(false)
       }
-    } else {
-      setSnackBarSeverity("warning")
-      setSnackBarMessage(`Sign in to ${action}`)
-      setSnackBarState(true)
     }
-    setLoading(false)
   }
+
   return (
     <>
       <Card
@@ -143,8 +167,8 @@ const EventCard = ({ data: { event_id, title, description, location, dateTime, p
                   label={new Date(dateTime).toLocaleString("en-US", {
                     hour: "numeric",
                     minute: "numeric",
-                    hour12: true, // Use 12-hour clock format
-                    timeZone: "UTC", // Adjust the time zone as needed
+                    hour12: true,
+                    timeZone: "UTC",
                   })}
                   icon={<AccessTimeRounded />}
                 />
@@ -186,6 +210,20 @@ const EventCard = ({ data: { event_id, title, description, location, dateTime, p
                     {registered ? "UnRegister" : "Register"}
                   </Button>
                 )}
+                <TeammatesDialog
+                  open={tmOpen}
+                  onClose={() => { setTmOpen(false) }}
+                  numberOfTeammates={numberOfTeammates}
+                  onSubmit={() => { handleClick() }}
+                  {...{
+                    teammates,
+                    setTeammates,
+                    setSnackBarMessage,
+                    setSnackBarSeverity,
+                    setSnackBarState
+                  }
+                  }
+                />
               </CardActions>
             </Stack>
           </CardContent>
