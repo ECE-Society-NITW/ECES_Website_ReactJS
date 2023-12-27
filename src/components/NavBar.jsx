@@ -16,12 +16,12 @@ const settings = ['Home', 'Members', 'Events', 'Logout']
 const Option = (icon, text) => {
     return (
         <ListItem key={text} disablePadding>
-            <ListItemButton>
-                <Link to={`/${text}`}>
+            <ListItemButton component={Link} to="/Members">
+                
                     <ListItemIcon>
                         {icon}
                     </ListItemIcon>
-                </Link>
+                
                 <ListItemText primary={text} />
             </ListItemButton>
         </ListItem>)
@@ -81,9 +81,9 @@ const NavBar = () => {
                             <Divider />
                             <Box sx={{ width: 250 }} role="presentation">
                                 <List>
-                                    {Option(<HomeIcon />, "Home")}
-                                    {Option(<PeopleIcon />, "Members")}
-                                    {Option(<EventAvailableIcon />, "Events")}
+                                    {Option(<HomeIcon />, "Home", "/")}
+                                    {Option(<PeopleIcon />, "Members", "/Members")}
+                                    {Option(<EventAvailableIcon />, "Events", "/events")}
                                     {Option(<LogoutIcon />, "Logout")}
                                 </List>
                             </Box>

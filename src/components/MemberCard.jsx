@@ -4,21 +4,27 @@ import ReactCardFlip from 'react-card-flip';
 
 const MemberCard = ({ member }) => {
   const [isFlipped, setIsFlipped] = useState(false);
+  
 
-  const handleClick = () => {
-    setIsFlipped(!isFlipped);
+  const handleMouseEnter = () => {
+    setIsFlipped(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsFlipped(false);
   };
 
   const cardStyle = {
     width: '200px', 
     height: '300px', 
     borderRadius: '20px',
+    boxShadow:'0 0 5px #FF72CA, 0 0 10px #FF72CA, 0 0 15px #FF72CA',
   };
 
   return (
     <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
       {/* Front side of the card */}
-      <Card style={cardStyle} onClick={handleClick}>
+      <Card style={cardStyle} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
         <CardMedia
           component="img"
           height="140"
@@ -44,7 +50,7 @@ const MemberCard = ({ member }) => {
       </Card>
 
       {/* Back side of the card */}
-      <Card style={cardStyle} onClick={handleClick}>
+      <Card style={cardStyle} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
         <CardContent>
           <Typography variant="body2" color="text.secondary">
             {member.bio}
