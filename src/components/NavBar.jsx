@@ -10,7 +10,7 @@ import LogoutIcon from '@mui/icons-material/Logout'
 import HomeIcon from '@mui/icons-material/Home';
 import { Link } from 'react-router-dom'
 
-const pages = ['Products', 'Pricing', 'Blog']
+const pages = ['Home','Members', 'Events']
 const settings = ['Home', 'Members', 'Events', 'Logout']
 
 const Option = (icon, text) => {
@@ -49,12 +49,25 @@ const NavBar = () => {
                 <Toolbar disableGutters>
                     <Box sx={{ borderRadius: '50%', overflow: 'hidden' }}>
                     </Box>
+                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+    {pages.map((page) => (
+        <Button
+            key={page}
+            component={Link}
+            to={page==='Home' ? '/': `/${page.toLowerCase()}`}
+            sx={{ my: 2, color: 'white', display: 'block' }}
+        >
+            {page}
+        </Button>
+    ))}
+</Box>
+
                     <Typography
                         variant="h6"
                         noWrap
                         component="a"
                         sx={{
-                            mr: 2,
+                            mr: 80,
                             display: { xs: 'none', md: 'flex' },
                             fontFamily: 'monospace',
                             fontWeight: 700,
@@ -112,17 +125,7 @@ const NavBar = () => {
                     >
                         ECE Society
                     </Typography>
-                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                        {pages.map((page) => (
-                            <Button
-                                key={page}
-                                onClick={() => { }}
-                                sx={{ my: 2, color: 'white', display: 'block' }}
-                            >
-                                {page}
-                            </Button>
-                        ))}
-                    </Box>
+                    
                     <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
