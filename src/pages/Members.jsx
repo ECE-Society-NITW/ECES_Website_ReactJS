@@ -6,7 +6,7 @@ const Members = () => {
   
   const membersList = [
     {
-      name: 'Mubashir',
+      name: 'John Doe',
       position: 'Executive Member',
       year: 'B.Tech 2nd year',
       image: '../Assets/Capture.PNG',
@@ -23,6 +23,9 @@ const Members = () => {
           <Box className='title-2' marginBottom={4.5} marginLeft={20}>
             Members
           </Box>
+          <Box className='title-2' marginBottom={1} marginLeft={82}>
+            General Secretary
+          </Box>
           {membersList.map((member, index) => (
             <Box key={index} display="flex"
             flexDirection="column"
@@ -30,6 +33,19 @@ const Members = () => {
             justifyContent="center"
             height="50vh">
               <MemberCard member={member} />
+            </Box>
+          ))}
+          <Box className='title-2' marginBottom={1} marginLeft={82}>
+            Joint Secretary
+          </Box>
+          {membersList.map((member, index) => (
+            <Box key={index} display="flex"
+            flexDirection="column"
+            alignItems="center"
+            justifyContent="center"
+            height="50vh">
+              <MemberCard member={member} />
+              
             </Box>
           ))}
         </Box>
