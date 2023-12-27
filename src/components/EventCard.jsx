@@ -104,7 +104,7 @@ const EventCard = ({
           transition: "all 0.5s ease",
           opacity: 0.95,
           "&:hover": {
-            boxShadow: "0 0 5px #FF72CA, 0 0 10px #FF72CA, 0 0 15px #FF72CA",
+            boxShadow: '0 0 10px 5px rgba(255, 215, 0, 0.1), 0 0 20px 10px rgba(255, 215, 0, 0.1), 0 0 30px 15px rgba(255, 215, 0, 0.1)',
           },
         }}
       >

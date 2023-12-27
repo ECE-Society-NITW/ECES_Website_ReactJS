@@ -17,13 +17,11 @@ const Members = () => {
   ];
     return (
         <Box>
-          <Box className='title'>
-            ECES
-          </Box>
-          <Box className='title-2' marginBottom={4.5} marginLeft={20}>
+          
+          <Box className='title-2' marginBottom={4.5} marginLeft={20} zIndex={2} color="white">
             Members
           </Box>
-          <Box className='title-2' marginBottom={1} marginLeft={82}>
+          <Box className='title-2' marginBottom={1} marginLeft={82} zIndex={2} color="white">
             General Secretary
           </Box>
           {membersList.map((member, index) => (
