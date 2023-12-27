@@ -1,10 +1,18 @@
-import React, { useState } from 'react';
-import { Card, CardMedia, Chip, Typography, CardContent, CardActions, Button, Stack } from '@mui/material';
-import ReactCardFlip from 'react-card-flip';
+import React, { useState } from "react";
+import {
+  Card,
+  CardMedia,
+  Chip,
+  Typography,
+  CardContent,
+  CardActions,
+  Button,
+  Stack,
+} from "@mui/material";
+import ReactCardFlip from "react-card-flip";
 
 const MemberCard = ({ member }) => {
   const [isFlipped, setIsFlipped] = useState(false);
-  
 
   const handleMouseEnter = () => {
     setIsFlipped(true);
@@ -15,31 +23,36 @@ const MemberCard = ({ member }) => {
   };
 
   const cardStyle = {
-    width: '200px', 
-    height: '300px', 
-    borderRadius: '20px',
-    //boxShadow: '0 0 10px 5px rgba(255, 215, 0, 0.1), 0 0 20px 10px rgba(255, 215, 0, 0.1), 0 0 30px 15px rgba(255, 215, 0, 0.1)',
+    width: "200px",
+    height: "300px",
+    borderRadius: "20px",
+    boxShadow: "0 0 10px 5px rgba(0, 0, 255, 0.5)",
   };
 
   return (
     <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
       {/* Front side of the card */}
-      <Card style={cardStyle} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+      <Card
+        style={cardStyle}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
         <CardMedia
           component="img"
           height="140"
-          image={member.image} 
-          alt={member.name}
+          image={member && member.pic ? member.pic : ""}
+          alt={member && member.name ? member.name : ""}
+          style={{ borderRadius: "100%", margin: "10px" }}
         />
         <CardContent>
           <Typography variant="h5" component="div">
-            {member.name}
+            {member && member.name ? member.name : ""}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {member.position}
+            {member && member.native ? member.native : ""}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {member.year}
+            {member && member.year ? member.year : ""}
           </Typography>
         </CardContent>
         <CardActions>
@@ -50,17 +63,25 @@ const MemberCard = ({ member }) => {
       </Card>
 
       {/* Back side of the card */}
-      <Card style={cardStyle} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+      <Card
+        style={cardStyle}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
         <CardContent>
           <Typography variant="body2" color="text.secondary">
-            {member.bio}
+            {member && member.description ? member.description : ""}
           </Typography>
         </CardContent>
         <CardActions>
           <Stack direction="row" spacing={1}>
-            {member.skills.map((skill, index) => (
-              <Chip key={index} label={skill} />
-            ))}
+            {member && member.skills ? (
+              member.skills.map((skill, index) => (
+                <Chip key={index} label={skill} />
+              ))
+            ) : (
+              <Chip label="No skills available" />
+            )}
           </Stack>
         </CardActions>
       </Card>
