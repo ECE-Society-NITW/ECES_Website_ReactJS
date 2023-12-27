@@ -8,7 +8,7 @@ import SnackBar from './components/SnackBar';
 import NavBar from './components/NavBar';
 import { ThemeProvider } from '@emotion/react';
 import { createTheme } from '@mui/material';
-
+import ParticleBackground from './components/particlesBackground';
 const darkTheme = createTheme({
   palette: {
     mode: 'dark'
@@ -23,6 +23,7 @@ const App = () => {
 
   return (
     <>
+     <ParticleBackground/>
       <ThemeProvider theme={darkTheme}>
         <NavBar />
         <Routes>
