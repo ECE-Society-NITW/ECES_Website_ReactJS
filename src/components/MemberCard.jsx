@@ -42,7 +42,9 @@ const MemberCard = ({ member }) => {
           height="140"
           image={member && member.pic ? member.pic : ""}
           alt={member && member.name ? member.name : ""}
-          style={{ borderRadius: "100%", margin: "10px" }}
+          style={{ borderRadius: "50%", margin: "10px", marginLeft: "30px", border: "3px solid blue", objectFit: "cover",
+          width: "70%",
+          height: "48%", }}
         />
         <CardContent>
           <Typography variant="h5" component="div">
