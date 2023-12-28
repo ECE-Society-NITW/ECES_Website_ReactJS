@@ -378,16 +378,17 @@ const Members = () => {
       },
     ],
   ];
+
+  const sortedMembers = membersList[0].sort((a, b) => a.priority - b.priority);
+
   return (
     <Box>
       <Box display="flex" flexWrap="wrap" justifyContent="center">
-        {membersList &&
-          membersList[0] &&
-          membersList[0].map((member, index) => (
-            <Box key={index} margin={2}>
-              <MemberCard member={member} />
-            </Box>
-          ))}
+      {sortedMembers.map((member, index) => (
+          <Box key={index} margin={2}>
+            <MemberCard member={member} />
+          </Box>
+        ))}
       </Box>
 
       <Box className="title-2" marginBottom={1} marginLeft={82}>
