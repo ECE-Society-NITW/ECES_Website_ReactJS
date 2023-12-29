@@ -1,0 +1,147 @@
+import React, { useEffect, useState } from "react";
+import { Box, Button, Typography } from "@mui/material";
+import { AnimatePresence, motion } from "framer-motion";
+
+const listOfTeams = [
+  {
+    name: "Epicode",
+    description:
+      "The other Tech team of the association which is the counter-part of the Hardware Team. It is charged with conducting events related to software and maintaining the tech of the association.",
+  },
+  {
+    name: "Hardware",
+    description:
+      "The Hardware team is charged with preparing and conducting workshops related to hardware part of ECE and also performs the necessary preparation of content for the events pertaining to hardware.",
+  },
+  {
+    name: "Events",
+    description:
+      "This team takes care of in-event happenings: organising the venue, crowd-control, seeking permissions and making sure an event goes smoothly.",
+  },
+  {
+    name: "Elements",
+    description:
+      "This team necessarily dictates the looks of the association. It is responsible for making the event posters, social media posts and stories and the beautiful presentations of workshops.",
+  },
+  {
+    name: "Engagements",
+    description:
+      "This team defines what the association communicates and how well it reaches people. It takes care of drafting the write-ups, prepare content for events and handle the social media of the association.",
+  },
+];
+
+const Team = motion(
+  React.forwardRef(({ team, setActive, active }, ref) => {
+    const [hover, setHover] = useState(false);
+    // make the box with name in top and description in bottom
+    return (
+      <Box
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
+        onClick={() => {
+          setActive(team.name);
+        }}
+        display="flex"
+        flexDirection="column"
+        justifyContent="space-around"
+        alignItems="center"
+        m={2}
+        borderRadius="20px"
+        boxShadow={hover ? 10 : 0}
+        maxWidth={{
+          sm: "45%",
+        }}
+        style={{
+          transition: "box-shadow 0.5s ease",
+          background: hover ? "#fff" : "#121212",
+          color: hover ? "#000" : "#fff",
+          zIndex: "10",
+          padding: "10px",
+        }}
+        ref={ref}
+      >
+        {active && (
+          <Button
+            onClick={(e) => {
+              setActive(false);
+              e.stopPropagation();
+            }}
+          >
+            x{" "}
+          </Button>
+        )}
+        <Typography variant="h4">{team.name}</Typography>
+        <Typography variant="p">{team.description}</Typography>
+      </Box>
+    );
+  })
+);
+
+const TeamInfo = motion(
+  React.forwardRef(({ team }, ref) => {
+    team = listOfTeams.find((t) => t.name === team);
+    return (
+      <Box
+        ref={ref}
+        width={"80%"}
+        style={{
+          transition: "box-shadow 0.5s ease",
+          background: "#121212",
+          color: "#fff",
+          zIndex: "10",
+          padding: "10px",
+        }}
+      >
+        <Typography variant="h4">{team.name}</Typography>
+      </Box>
+    );
+  })
+);
+
+const Teams = () => {
+  const [teams, setTeams] = useState(listOfTeams);
+  const [active, setActive] = useState(null);
+
+  useEffect(() => {
+    if (!active) setTeams(listOfTeams);
+    if (active) {
+      setTeams((teams) => teams.filter((team) => team.name === active));
+    }
+  }, [active]);
+
+  return (
+    <Box>
+      <Box display="flex" flexWrap="wrap" justifyContent="center">
+        <AnimatePresence mode={"sync"}>
+          {teams.map((team) => (
+            <Team
+              layout
+              key={team.name}
+              {...{
+                team,
+                setActive,
+                active,
+              }}
+              // initial={{ scale: 1, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              transition={{ type: "spring" }}
+            />
+          ))}
+          {active && (
+            <TeamInfo
+              key={`active-${active}`}
+              layout
+              team={active}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              transition={{ type: "spring" }}
+            />
+          )}
+        </AnimatePresence>
+      </Box>
+    </Box>
+  );
+};
+
+export default Teams;
