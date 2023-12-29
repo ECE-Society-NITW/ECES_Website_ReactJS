@@ -47,7 +47,8 @@ const MemberCard = ({ member }) => {
             borderRadius: "50%",
             margin: "10px",
             marginLeft: "30px",
-            border: "3px solid blue",
+            background: "linear-gradient(to right, #00ff00, #0000ff)", // Linear gradient as background
+            padding: "3px",
             objectFit: "cover",
             width: "70%",
             height: "48%",
@@ -58,7 +59,7 @@ const MemberCard = ({ member }) => {
             {member && member.name ? member.name : ""}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {member && member.native ? member.native : ""}
+            {member && member.place ? member.place : ""}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {member && member.year ? member.year : ""}
@@ -91,14 +92,14 @@ const MemberCard = ({ member }) => {
                 <GitHubIcon style={{ fontSize: 50, color: "white" }} />
               </IconButton>
             ) : null}
-            {member && member.linkedin ? (
+            {member && member.linkdein ? (
               <IconButton
                 target="_blank"
-                href={member.linkedin}
+                href={member.linkdein}
                 aria-label="LinkedIn"
                 color="primary"
               >
-                <LinkedInIcon />
+                <LinkedInIcon style={{ fontSize: 50, color: "white" }}/>
               </IconButton>
             ) : null}
           </Stack>

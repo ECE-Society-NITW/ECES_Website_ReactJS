@@ -9,7 +9,7 @@ const Members = () => {
     fetch("https://ece-society.onrender.com/api/members")
       .then((response) => response.json())
       .then((data) => {
-        //console.log("API Response:", data); // Log the API response
+        console.log("API Response:", data); // Log the API response
         setMembers(data.data); // Access the 'data' property
       })
       .catch((error) => {
