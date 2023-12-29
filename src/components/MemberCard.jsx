@@ -6,7 +6,6 @@ import {
   Typography,
   CardContent,
   CardActions,
-  Button,
   Stack,
 } from "@mui/material";
 import ReactCardFlip from "react-card-flip";
