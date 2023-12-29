@@ -26,7 +26,7 @@ const MemberCard = ({ member }) => {
     width: "200px",
     height: "300px",
     borderRadius: "20px",
-    boxShadow: "0 0 10px 5px rgba(0, 0, 255, 0.5)",
+    //boxShadow: "0 0 10px 5px rgba(0, 0, 255, 0.5)",
   };
 
   return (
@@ -58,9 +58,7 @@ const MemberCard = ({ member }) => {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small" color="primary">
-            View Profile
-          </Button>
+        
         </CardActions>
       </Card>
 
