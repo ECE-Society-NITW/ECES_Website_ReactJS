@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import {
   Card,
   CardMedia,
-  Chip,
   Typography,
   CardContent,
   CardActions,
   Stack,
+  IconButton,
 } from "@mui/material";
 import ReactCardFlip from "react-card-flip";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
 const MemberCard = ({ member }) => {
   const [isFlipped, setIsFlipped] = useState(false);
@@ -77,14 +79,28 @@ const MemberCard = ({ member }) => {
           </Typography>
         </CardContent>
         <CardActions>
-          <Stack direction="row" spacing={1}>
-            {member && member.skills ? (
-              member.skills.map((skill, index) => (
-                <Chip key={index} label={skill} />
-              ))
-            ) : (
-              <Chip label="No skills available" />
-            )}
+          <Stack direction="row" spacing={1}></Stack>
+          <Stack direction="row" spacing={1} mt={2}>
+            {member && member.github ? (
+              <IconButton
+                target="_blank"
+                href={member.github}
+                aria-label="GitHub"
+                color="primary"
+              >
+                <GitHubIcon style={{ fontSize: 50, color: "white" }} />
+              </IconButton>
+            ) : null}
+            {member && member.linkedin ? (
+              <IconButton
+                target="_blank"
+                href={member.linkedin}
+                aria-label="LinkedIn"
+                color="primary"
+              >
+                <LinkedInIcon />
+              </IconButton>
+            ) : null}
           </Stack>
         </CardActions>
       </Card>

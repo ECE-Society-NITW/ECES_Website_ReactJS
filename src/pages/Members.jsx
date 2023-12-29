@@ -28,10 +28,6 @@ const Members = () => {
           </Box>
         ))}
       </Box>
-
-      <Box className="title-2" marginBottom={1} marginLeft={82}>
-        Joint Secretary
-      </Box>
     </Box>
   );
 };
