@@ -10,6 +10,7 @@
     "@react-oauth/google": "^0.12.1",
     "@tsparticles/react": "^3.0.0",
     "@tsparticles/slim": "^3.0.3",
+    "framer-motion": "^10.16.16",
     "react": "^18.2.0",
     "react-burger-menu": "^3.0.9",
     "react-card-flip": "^1.2.2",
