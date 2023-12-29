@@ -18,6 +18,7 @@ import React, { useEffect, useState } from "react"
 import NodeJS from "../utils/NodeJS"
 import { useContextSnackBar } from "../context/SnackBarContext"
 import "../css/App.css"
+import "../css/neonBtn.css"
 import FeedbackDialog from "./miscellaneous/FeedbackDialog"
 import TeammatesDialog from "./miscellaneous/RegistrationDialog"
 
@@ -102,19 +103,20 @@ const EventCard = ({
           margin: "auto",
           borderRadius: 6,
           transition: "all 0.5s ease",
-          opacity: 0.95,
-          "&:hover": {
-            boxShadow: '0 0 10px 5px rgba(255, 215, 0, 0.1), 0 0 20px 10px rgba(255, 215, 0, 0.1), 0 0 30px 15px rgba(255, 215, 0, 0.1)',
-          },
+          opacity: 0.9,
+          // backgroundImage:"linear-gradient(to bottom, #194654, #CC892F)",
+          backgroundColor: '#301E67',
+          // "&:hover": {
+          //   boxShadow: '0 0 10px 5px rgba(255, 215, 0, 0.1), 0 0 20px 10px rgba(255, 215, 0, 0.1), 0 0 30px 15px rgba(255, 215, 0, 0.1)',
+          // },
         }}
       >
         <Stack
           direction={{ xs: "column", md: "row" }}
           sx={{
-            width: { xs: "320px", md: "1000px" },
+            width: { xs: "320px", md: "900px" },
             minHeight: { xs: "0px", md: "270px" },
             padding: { xs: "7px", md: "10px" },
-            backgroundColor: "#282828",
           }}
           justifyContent="center"
         >
@@ -139,31 +141,38 @@ const EventCard = ({
               <Typography
                 gutterBottom
                 variant="h5"
-                color="white"
+                color="#ED5AB3"
                 component="div"
+                // sx={{ fontFamily: 'Montserrat Subrayada, sans-serif', margin: 'auto' }}
+                sx={{ fontFamily: 'Luckiest Guy, sans-serif', margin: 'auto',color:'ED5AB3'
+              }}
               >
                 {title}
               </Typography>
-              <Typography variant="body2" color="white">
+              <Typography
+                variant="body2"
+                color="white"
+                sx={{ fontFamily: 'Abhaya Libre, serif', fontSize:'15px' }}
+              >
                 {description}
               </Typography>
               <Box>
                 <Chip
-                  variant="outlined"
-                  sx={{ borderRadius: "4px", mr: "5px", mt: "5px" }}
+                  // variant="outlined"
+                  sx={{ borderRadius: "20px", mr: "5px", mt: "5px" }}
                   label={location}
                   icon={<LocationOnRounded />}
                 />
-              </Box>
-              <Box>
+              {/* </Box>
+              <Box> */}
                 <Chip
-                  variant="outlined"
-                  sx={{ borderRadius: "4px", mr: "5px", mt: "5px" }}
+                  // variant="outlined"
+                  sx={{ borderRadius: "20px", mr: "5px", mt: "5px" }}
                   label={getFmtDate(new Date(dateTime))}
                   icon={<EventAvailableRounded />}
                 />
                 <Chip
-                  sx={{ borderRadius: "4px", mr: "5px", mt: "5px" }}
+                  sx={{ borderRadius: "20px", mr: "5px", mt: "5px" }}
                   label={new Date(dateTime).toLocaleString("en-US", {
                     hour: "numeric",
                     minute: "numeric",
@@ -177,7 +186,7 @@ const EventCard = ({
                 {new Date() > new Date(dateTime) ? (
                   <>
                     <Button
-                      className="NeonButton"
+                      // className="neonButton"
                       size="small"
                       variant="contained"
                       disabled={fbDone || loading}
@@ -201,7 +210,7 @@ const EventCard = ({
                   </>
                 ) : (
                   <Button
-                    className="NeonButton"
+                    className="neonButton"
                     size="small"
                     variant="contained"
                     disabled={loading}
@@ -227,8 +236,8 @@ const EventCard = ({
               </CardActions>
             </Stack>
           </CardContent>
-        </Stack>
-      </Card>
+        </Stack >
+      </Card >
     </>
   )
 }

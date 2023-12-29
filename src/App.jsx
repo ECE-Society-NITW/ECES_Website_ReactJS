@@ -9,7 +9,8 @@ import NavBar from './components/NavBar';
 import { ThemeProvider } from '@emotion/react';
 import { createTheme } from '@mui/material';
 import ParticleBackground from './components/particlesBackground';
-const darkTheme = createTheme({
+
+const customTheme = createTheme({
   palette: {
     mode: 'dark'
   }
@@ -24,7 +25,7 @@ const App = () => {
   return (
     <>
      <ParticleBackground/>
-      <ThemeProvider theme={darkTheme}>
+      <ThemeProvider theme={customTheme}>
         <NavBar />
         <Routes>
           <Route path="/" element={<Dashboard />} />

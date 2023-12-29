@@ -6,7 +6,6 @@ import {
   Typography,
   CardContent,
   CardActions,
-  Button,
   Stack,
 } from "@mui/material";
 import ReactCardFlip from "react-card-flip";
@@ -15,6 +14,7 @@ const MemberCard = ({ member }) => {
   const [isFlipped, setIsFlipped] = useState(false);
 
   const handleMouseEnter = () => {
+    setIsFlipped(!isFlipped)
     setIsFlipped(true);
   };
 
@@ -22,27 +22,49 @@ const MemberCard = ({ member }) => {
     setIsFlipped(false);
   };
 
+  const toggleFlip = ()=>{
+    setIsFlipped(!isFlipped);
+  }
+
   const cardStyle = {
     width: "200px",
     height: "300px",
     borderRadius: "20px",
-    boxShadow: "0 0 10px 5px rgba(0, 0, 255, 0.5)",
+    // boxShadow: "0 0 10px 5px rgba(0, 0, 255, 0.5)",
   };
+
+  const colours = [
+    {first:'#ED6663',second:'#31112C'},
+    {first:'#EDD2F3',second:'#0E185F'},
+    {first:'#53B8BB',second:'#055052'},
+    {first:'#ED6663',second:'#31112C'},
+    {first:'#ED6663',second:'#31112C'},
+    {first:'8E2E6A',second:'#311054'},
+    {first:'#FF9800',second:'7C0000'},
+  ]
 
   return (
     <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
       {/* Front side of the card */}
       <Card
         style={cardStyle}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
+        // onMouseEnter={handleMouseEnter}
+        // onMouseLeave={handleMouseLeave}
+        onClick={toggleFlip}
+        sx={{backgroundImage:`linear-gradient(to bottom, ${colours[Number(member.priority)].first}, ${colours[Number(member.priority)].second})`}}
+        // sx={{backgroundImage:"linear-gradient(to bottom, #FF9800, #a80000)"}}
+        // sx={{backgroundImage:"linear-gradient(to bottom, #EDD2F3, #0E185F)"}}
+        // sx={{backgroundImage:"linear-gradient(to top, #055052, #53B8BB)"}}
+        // sx={{backgroundImage:"linear-gradient(to bottom, #ED6663, #31112C)"}}
+        // sx={{backgroundImage:"linear-gradient(to bottom, #8E2E6A, #311054)"}}
+        // sx={{backgroundImage:"linear-gradient(to top, #0C356A, #F4CE14)"}}
       >
         <CardMedia
           component="img"
           height="140"
           image={member && member.pic ? member.pic : ""}
-          alt={member && member.name ? member.name : ""}
-          style={{ borderRadius: "50%", margin: "10px", marginLeft: "30px", border: "3px solid blue", objectFit: "cover",
+          alt={member && Number(member.priority) ? Number(member.priority) : ""}
+          style={{ borderRadius: "50%", margin: "10px", marginLeft: "30px", objectFit: "cover",
           width: "70%",
           height: "48%", }}
         />
@@ -51,17 +73,12 @@ const MemberCard = ({ member }) => {
             {member && member.name ? member.name : ""}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {member && member.native ? member.native : ""}
+            {member && member.place ? member.place : ""}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {member && member.year ? member.year : ""}
           </Typography>
         </CardContent>
-        <CardActions>
-          <Button size="small" color="primary">
-            View Profile
-          </Button>
-        </CardActions>
       </Card>
 
       {/* Back side of the card */}
@@ -69,8 +86,10 @@ const MemberCard = ({ member }) => {
         style={cardStyle}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-      >
-        <CardContent>
+        onClick={toggleFlip}
+        sx={{backgroundImage:`linear-gradient(to bottom, ${colours[Number(member.priority)].second}, ${colours[Number(member.priority)].first})`}}
+        >
+        <CardContent sx={{}}>
           <Typography variant="body2" color="text.secondary">
             {member && member.description ? member.description : ""}
           </Typography>

@@ -2,14 +2,14 @@ const particlesConfig =
     {
         background: {
             color: {
-                value: "#000",
+                value: "#03001C",
             },
         },
         fpsLimit: 120,
         interactivity: {
             events: {
                 onClick: {
-                    enable: true,
+                    enable: false,
                     mode: "push",
                 },
                 onHover: {
@@ -30,10 +30,10 @@ const particlesConfig =
         },
         particles: {
             color: {
-                value: "#f4ce14",
+                value: "#3887BE",
             },
             links: {
-                color: "#f4ce14",
+                color: "#fff",
                 distance: 150,
                 enable: true,
                 opacity: 0.5,
@@ -60,10 +60,10 @@ const particlesConfig =
                 value: 0.5,
             },
             shape: {
-                type: "circle",
+                type: "polygon",
             },
             size: {
-                value: { min: 1, max: 5 },
+                value: { min: 1, max: 10 },
             },
         },
         detectRetina: true,

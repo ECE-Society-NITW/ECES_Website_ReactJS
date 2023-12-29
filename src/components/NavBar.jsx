@@ -43,7 +43,8 @@ const NavBar = () => {
     return (
         <AppBar position="sticky" sx={{
             backdropFilter: 'blur(3px)',
-            backgroundColor: 'rgba(0,0,0,0.5)',
+            backgroundColor: 'rgba(255,255,255,0.1)',
+            // backgroundColor: '#100E47',
         }}>
             <Container maxWidth="xl" >
                 <Toolbar disableGutters>
@@ -84,7 +85,9 @@ const NavBar = () => {
                                 backdropFilter: 'blur(3px)',
                                 backgroundColor: 'rgba(40,40,40,0)',
                             }}>
-                            <Box>
+                            <Box sx={{ backgroundColor: 'rgba(0,0,0,0.5)',}}>
+
+                            <Box  sx={{ backgroundColor: 'rgba(0,0,0,0.5)',}}>
                                 <Stack direction='column' justifyContent='space-evenly' alignItems='center' sx={{ width: 250, height: 170, mt: '20px' }}>
                                     <Avatar sx={{ height: 100, width: 100 }} src={user.picture} />
                                     <Typography variant='h6'>{user.name ? user.name : "Jane Doe"}</Typography>
@@ -105,6 +108,7 @@ const NavBar = () => {
                                 <List>
                                     {Option(<ShareIcon />, "Invite Friends")}
                                 </List>
+                            </Box>
                             </Box>
                         </SwipeableDrawer>
                     </Box>
