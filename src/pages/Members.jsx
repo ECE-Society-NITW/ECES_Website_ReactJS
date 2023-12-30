@@ -1,7 +1,7 @@
 import React from "react";
-import { Box } from "@mui/material";
+import { Box, Grid, Stack } from "@mui/material";
 import MemberCard from "../components/MemberCard";
-const membersList = require('../Assets/updatedd.json')
+const membersList = require('../Assets/members.json')
 
 const Members = () => {
 
@@ -9,17 +9,13 @@ const Members = () => {
 
   return (
     <Box>
-      <Box display="flex" flexWrap="wrap" justifyContent="center">
-      {sortedMembers.map((member, index) => (
-          <Box key={index} margin={2}>
+      <Stack container direction='row' justifyContent='center' alignItems='center' gap={3} flexWrap='wrap' sx={{ margin: 'auto' }}>
+        {sortedMembers.map((member, index) => (
+          <Grid item key={index}>
             <MemberCard member={member} />
-          </Box>
+          </Grid>
         ))}
-      </Box>
-
-      <Box className="title-2" marginBottom={1} marginLeft={82}>
-        Joint Secretary
-      </Box>
+      </Stack>
     </Box>
   );
 };
