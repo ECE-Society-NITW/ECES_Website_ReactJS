@@ -29,6 +29,19 @@ const MemberCard = ({ member }) => {
     borderRadius: "20px",
     //boxShadow: "0 0 10px 5px rgba(0, 0, 255, 0.5)",
   };
+  const scrollableContentStyle = {
+    maxHeight: "150px", 
+    padding: "10px",
+    overflowY: "auto",
+    scrollbarWidth: "thin", 
+    scrollbarColor: "transparent transparent", 
+    "&::-webkit-scrollbar": {
+      width: "0.4em",
+    },
+    "&::-webkit-scrollbar-thumb": {
+      backgroundColor: "transparent",
+    }, 
+  };
 
   return (
     <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
@@ -74,11 +87,13 @@ const MemberCard = ({ member }) => {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
+        <div style={scrollableContentStyle}>
         <CardContent>
           <Typography variant="body2" color="text.secondary">
             {member && member.description ? member.description : ""}
           </Typography>
         </CardContent>
+        </div>
         <CardActions>
           <Stack direction="row" spacing={1}></Stack>
           <Stack direction="row" spacing={1} mt={2}>
