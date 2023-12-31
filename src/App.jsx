@@ -9,18 +9,17 @@ import NavBar from './components/NavBar';
 import { ThemeProvider } from '@emotion/react';
 import { createTheme } from '@mui/material';
 import ParticleBackground from './components/particlesBackground';
+import Teams from './pages/Teams'
 
 const customTheme = createTheme({
   palette: {
-    mode: 'dark'
-  }
-})
+    mode: "dark",
+  },
+});
 
 const App = () => {
-  const { JWT, user } = useContextAuth()
-  useEffect(() => {
-
-  }, [JWT, user])
+  const { JWT, user } = useContextAuth();
+  useEffect(() => {}, [JWT, user]);
 
   return (
     <>
@@ -30,11 +29,13 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/Members" element={<Members />} />
+          <Route path="/Teams" element={<Teams />} />
+          <Route path="*" element={<h1>404</h1>} />
         </Routes>
         <SnackBar />
       </ThemeProvider>
     </>
   );
-}
+};
 
 export default App;

@@ -32,7 +32,7 @@ import HomeIcon from '@mui/icons-material/Home';
 
 import { Link } from 'react-router-dom'
 
-const pages = ['Home', 'Members', 'Events']
+const pages = ['Home', 'Members', 'Events','Teams']
 const settings = ['Home', 'Members', 'Events', 'Logout']
 
 const Option = (icon, text) => {
@@ -48,18 +48,17 @@ const Option = (icon, text) => {
 }
 
 const NavBar = () => {
-    const [anchorElUser, setAnchorElUser] = useState(null)
-    const [drawerState, setDrawerState] = useState(false)
-    const { user } = useContextAuth()
+  const [anchorElUser, setAnchorElUser] = useState(null);
+  const [drawerState, setDrawerState] = useState(false);
+  const { user } = useContextAuth();
 
-    const handleOpenUserMenu = (event) => {
-        setAnchorElUser(event.currentTarget)
-    }
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
 
-    const handleCloseUserMenu = () => {
-        setAnchorElUser(null)
-    }
-
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
     return (
         <AppBar position="sticky" sx={{
             backdropFilter: 'blur(3px)',
