@@ -348,7 +348,7 @@
     },
     {
         "_id": "658c744ef20d357549793e42",
-        "priority": 0,
+        "priority": 1,
         "mail": "sr962073@student.nitw.ac.in",
         "name": "Srutilaya Rupesh",
         "place": "Kerala ",
@@ -374,7 +374,7 @@
     },
     {
         "_id": "658d917ef6b14667399691ed",
-        "priority": 1,
+        "priority": 0,
         "mail": "mb922043@student.nitw.ac.in",
         "name": "Bhanu Yashwanth Reddy",
         "place": "Guntur, Andhrapradesh",
