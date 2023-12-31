@@ -1,16 +1,17 @@
-import React, { useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
-import "./css/App.css";
-import { useContextAuth } from "./context/AuthContext";
-import Dashboard from "./pages/Dashboard";
-import Members from "./pages/Members";
-import SnackBar from "./components/SnackBar";
-import NavBar from "./components/NavBar";
-import { ThemeProvider } from "@emotion/react";
-import { createTheme } from "@mui/material";
-import ParticleBackground from "./components/particlesBackground";
-import Teams from "./pages/Teams";
-const darkTheme = createTheme({
+import React, { useEffect } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import './css/App.css';
+import { useContextAuth } from './context/AuthContext';
+import Dashboard from './pages/Dashboard';
+import Members from './pages/Members';
+import SnackBar from './components/SnackBar';
+import NavBar from './components/NavBar';
+import { ThemeProvider } from '@emotion/react';
+import { createTheme } from '@mui/material';
+import ParticleBackground from './components/particlesBackground';
+import Teams from './pages/Teams'
+
+const customTheme = createTheme({
   palette: {
     mode: "dark",
   },
@@ -22,8 +23,8 @@ const App = () => {
 
   return (
     <>
-      <ParticleBackground/>
-      <ThemeProvider theme={darkTheme}>
+     <ParticleBackground/>
+      <ThemeProvider theme={customTheme}>
         <NavBar />
         <Routes>
           <Route path="/" element={<Dashboard />} />
