@@ -1,32 +1,56 @@
 import React, { useEffect, useState } from "react";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Divider, Grid, Stack, Typography } from "@mui/material";
 import { AnimatePresence, motion } from "framer-motion";
+import MemberCard from "../components/MemberCard";
+const members = require("../Assets/members.json").sort(
+  (a, b) => a.priority - b.priority
+);
 
 const listOfTeams = [
   {
     name: "Epicode",
     description:
-      "The other Tech team of the association which is the counter-part of the Hardware Team. It is charged with conducting events related to software and maintaining the tech of the association.",
+      "The other Tech team of the association which is the counter-part of the Electronics Team. It is charged with conducting events related to software and maintaining the tech of the association.",
+    bigDescription:
+      "The Epicode Team excels in software development, coding, and algorithm design. They organize engaging events, like coding competitions, and maintain the society's tech infrastructure. Their collective expertise advances the technical landscape, fostering innovation and collaboration among software enthusiasts.",
+    members: ["Bhanu Yashwanth Reddy", "Jitesh D", "Shashank Desai"],
   },
   {
-    name: "Hardware",
+    name: "Electronics",
     description:
-      "The Hardware team is charged with preparing and conducting workshops related to hardware part of ECE and also performs the necessary preparation of content for the events pertaining to hardware.",
+      "The Electronics team is charged with preparing and conducting workshops related to hardware part of ECE and also performs the necessary preparation of content for the events pertaining to hardware.",
+    bigDescription:
+      "The Electronics Team conducts workshops and events dedicated to hardware innovations and also actively participates in hands-on project development in the same domain. The  practical approach offers members valuable real-world experiences, fostering collaboration and skill enhancement among hardware enthusiasts.",
+    members: [
+      "K Naga Sarachhandra ",
+      "Shashank vishwas damle ",
+      "Asmit Sou",
+      "Aditya Kondam",
+    ],
   },
   {
     name: "Events",
     description:
       "This team takes care of in-event happenings: organising the venue, crowd-control, seeking permissions and making sure an event goes smoothly.",
+    bigDescription:
+      "The Events Team is the backbone of seamless event execution. Tasked with organizing venues, managing crowds, securing necessary permissions, and ensuring overall event logistics, this dedicated team ensures the smooth flow of every occasion. Their meticulous planning and execution guarantee that events run efficiently, providing a positive and engaging experience for participants.",
+    members: ["Srutilaya Rupesh", "Kinshuk Yadav"],
   },
   {
     name: "Elements",
     description:
       "This team necessarily dictates the looks of the association. It is responsible for making the event posters, social media posts and stories and the beautiful presentations of workshops.",
+    bigDescription:
+      "The Elements Team serves as the creative force behind the society's visual presence. Responsible for crafting eye-catching event posters, engaging social media posts, and compelling workshop presentations, this team adds a dynamic touch to the society's communications. Their expertise lies in graphic design and content creation.",
+    members: ["Sai Vamsi "],
   },
   {
     name: "Engagements",
     description:
       "This team defines what the association communicates and how well it reaches people. It takes care of drafting the write-ups, prepare content for events and handle the social media of the association.",
+    bigDescription:
+      "The Engagements Team  is the creative engine that drives content and communication strategies. Tasked with drafting compelling write-ups, preparing event content, and managing the society's social media presence, this team plays a pivotal role in shaping the narrative of ECES. Their expertise lies in content creation and social media management.",
+    members: ["Meghana Bhanuprasad", "Aishwarya Hulle"],
   },
 ];
 
@@ -71,7 +95,7 @@ const Team = motion(
           </Button>
         )}
         <Typography variant="h4">{team.name}</Typography>
-        <Typography variant="p">{team.description}</Typography>
+        {!active && <Typography variant="p">{team.description}</Typography>}
       </Box>
     );
   })
@@ -79,7 +103,9 @@ const Team = motion(
 
 const TeamInfo = motion(
   React.forwardRef(({ team }, ref) => {
-    team = listOfTeams.find((t) => t.name === team);
+    const teamMembers = members.filter((member) =>
+      team?.members.includes(member.name)
+    );
     return (
       <Box
         ref={ref}
@@ -92,7 +118,23 @@ const TeamInfo = motion(
           padding: "10px",
         }}
       >
-        <Typography variant="h4">{team.name}</Typography>
+        <Typography> {team.bigDescription} </Typography>
+        <Divider sx={{ marginBottom: "1em", marginTop: "1em" }} />
+        <Stack
+          container
+          direction="row"
+          justifyContent="center"
+          alignItems="center"
+          gap={3}
+          flexWrap="wrap"
+          sx={{ margin: "auto" }}
+        >
+          {teamMembers.map((member, index) => (
+            <Grid item key={index}>
+              <MemberCard member={member} />
+            </Grid>
+          ))}
+        </Stack>
       </Box>
     );
   })
@@ -132,7 +174,7 @@ const Teams = () => {
             <TeamInfo
               key={`active-${active}`}
               layout
-              team={active}
+              team={listOfTeams.find((team) => team.name === active)}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
               transition={{ type: "spring" }}
