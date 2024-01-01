@@ -49,7 +49,7 @@ const GlassmorphicComponent = () => {
       <div style={{ width: "55%" }}>
         <GlassmorphicCard2 style={{ width: "90%", marginLeft: "2rem"}}>
           <CardContent style= {{ marginLeft: "1rem"}}>
-            <img src={Capture} height="570" width="470" />
+            <img alt="logo" src={Capture} height="570" width="470" />
           </CardContent>
         </GlassmorphicCard2>
       </div>
