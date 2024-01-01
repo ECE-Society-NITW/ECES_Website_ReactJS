@@ -6,19 +6,22 @@ const AuthState = ({ children }) => {
     
     const [JWT, setJWT] = useState('')
     const [user,setUser] = useState({})
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const credential = localStorage.getItem('jwt')
         if (credential){
             setJWT(credential)
             NodeJS.POST('/api/users',{credential})
-                  .then((data)=>setUser(data))
+                  .then((data)=>setUser(data) && setLoading(false))
                   .catch((err)=>console.log(err))
+        } else {
+            setLoading(false);
         }
     }, [JWT])
 
     return (
-        <AuthContext.Provider value={{ JWT, setJWT, user, setUser }}>
+        <AuthContext.Provider value={{ JWT, setJWT, user, setUser, loading }}>
             {children}
         </AuthContext.Provider>
     )

@@ -9,8 +9,10 @@ import NavBar from "./components/NavBar";
 import { ThemeProvider } from "@emotion/react";
 import { createTheme } from "@mui/material";
 import EventPage from "./pages/Eventpage";
+import ParticleBackground from "./components/particlesBackground";
+import Teams from "./pages/Teams";
 
-const darkTheme = createTheme({
+const customTheme = createTheme({
   palette: {
     mode: "dark",
   },
@@ -22,12 +24,15 @@ const App = () => {
 
   return (
     <>
-      <ThemeProvider theme={darkTheme}>
+      <ParticleBackground />
+      <ThemeProvider theme={customTheme}>
         <NavBar />
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/Members" element={<Members />} />
-          <Route path="/Event" element={<EventPage />} />
+          <Route path="/Events" element={<EventPage />} />
+          <Route path="/Teams" element={<Teams />} />
+          <Route path="*" element={<h1>404</h1>} />
         </Routes>
         <SnackBar />
       </ThemeProvider>
