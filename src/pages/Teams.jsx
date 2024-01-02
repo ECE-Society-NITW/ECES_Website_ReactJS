@@ -13,7 +13,7 @@ const listOfTeams = [
       "The other Tech team of the association which is the counter-part of the Electronics Team. It is charged with conducting events related to software and maintaining the tech of the association.",
     bigDescription:
       "The Epicode Team excels in software development, coding, and algorithm design. They organize engaging events, like coding competitions, and maintain the society's tech infrastructure. Their collective expertise advances the technical landscape, fostering innovation and collaboration among software enthusiasts.",
-    members: ["Bhanu Yashwanth Reddy", "Jitesh D", "Shashank Desai"],
+    members: ["Bhanu Yashwanth Reddy", "Jitesh D", "Shashank Desai", "Mubashir", "Somil"],
   },
   {
     name: "Electronics",
