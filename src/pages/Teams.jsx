@@ -50,7 +50,7 @@ const listOfTeams = [
       "This team defines what the association communicates and how well it reaches people. It takes care of drafting the write-ups, prepare content for events and handle the social media of the association.",
     bigDescription:
       "The Engagements Team  is the creative engine that drives content and communication strategies. Tasked with drafting compelling write-ups, preparing event content, and managing the society's social media presence, this team plays a pivotal role in shaping the narrative of ECES. Their expertise lies in content creation and social media management.",
-    members: ["Meghana Bhanuprasad", "Aishwarya Hulle"],
+    members: ["Meghana Bhanuprasad"],
   },
 ];
 
