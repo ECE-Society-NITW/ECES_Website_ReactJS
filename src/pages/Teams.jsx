@@ -13,7 +13,13 @@ const listOfTeams = [
       "The other Tech team of the association which is the counter-part of the Electronics Team. It is charged with conducting events related to software and maintaining the tech of the association.",
     bigDescription:
       "The Epicode Team excels in software development, coding, and algorithm design. They organize engaging events, like coding competitions, and maintain the society's tech infrastructure. Their collective expertise advances the technical landscape, fostering innovation and collaboration among software enthusiasts.",
-    members: ["Bhanu Yashwanth Reddy", "Jitesh D", "Shashank Desai", "Mubashir", "Somil"],
+    members: [
+      "Bhanu Yashwanth Reddy",
+      "Jitesh D",
+      "Shashank Desai",
+      "Mubashir",
+      "Somil",
+    ],
   },
   {
     name: "Electronics",
@@ -77,10 +83,13 @@ const Team = motion(
         }}
         style={{
           transition: "box-shadow 0.5s ease",
-          background: hover ? "#fff" : "#121212",
+          backgroundColor: hover ? "#ddd" : "rgba(255, 255, 255, 0.1)",
+          boxShadow:
+            "0 4px 6px rgba(0, 0, 0, 0.1),0 1px 3px rgba(0, 0, 0, 0.1)",
           color: hover ? "#000" : "#fff",
           zIndex: "10",
           padding: "10px",
+          transform: hover ? "scale(1.1)" : "",
         }}
         ref={ref}
       >
@@ -112,7 +121,9 @@ const TeamInfo = motion(
         width={"80%"}
         style={{
           transition: "box-shadow 0.5s ease",
-          background: "#121212",
+          backgroundColor: "rgba(255, 255, 255, 0.1)",
+          boxShadow:
+            "0 4px 6px rgba(0, 0, 0, 0.1),0 1px 3px rgba(0, 0, 0, 0.1)",
           color: "#fff",
           zIndex: "10",
           padding: "10px",
