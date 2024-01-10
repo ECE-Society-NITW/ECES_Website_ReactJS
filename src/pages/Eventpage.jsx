@@ -3,7 +3,6 @@ import { Card, CardContent, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 import Capture from "../Assets/image.png";
 
-
 const GlassmorphicCard2 = styled(Card)(({ theme }) => ({
   backgroundColor: "rgba(255, 255, 255, 0.1)",
   backdropFilter: "blur(10px)",
@@ -42,13 +41,12 @@ const GlassmorphicComponent = () => {
       </defs>
     </svg>
   `;
-   
-      
+
   return (
     <div style={{ display: "flex", padding: "2rem" }}>
       <div style={{ width: "55%" }}>
-        <GlassmorphicCard2 style={{ width: "90%", marginLeft: "2rem"}}>
-          <CardContent style= {{ marginLeft: "1rem"}}>
+        <GlassmorphicCard2 style={{ width: "90%", marginLeft: "2rem" }}>
+          <CardContent style={{ marginLeft: "1rem" }}>
             <img alt="logo" src={Capture} height="570" width="470" />
           </CardContent>
         </GlassmorphicCard2>
@@ -60,7 +58,7 @@ const GlassmorphicComponent = () => {
         }}
       >
         <div>
-        <GlassmorphicCard2 style={{ marginRight: "2rem", height: "11rem"}}>
+          <GlassmorphicCard2 style={{ marginRight: "2rem", height: "11rem" }}>
             <CardContent style={{ display: "flex" }}>
               <div>
                 <img
@@ -81,22 +79,30 @@ const GlassmorphicComponent = () => {
                 <Typography variant="h6" color="text.secondary">
                   <div style={{ display: "flex" }}>
                     <div dangerouslySetInnerHTML={{ __html: svgCode }} />{" "}
-                    <span style={{ marginLeft: "3px" }}>National Institute of Technology Warangal</span>
+                    <span style={{ marginLeft: "3px" }}>
+                      National Institute of Technology Warangal
+                    </span>
                   </div>
                 </Typography>
                 <div style={{ display: "flex" }}>
-                  <GlassmorphicCard3 style={{ marginRight: "1rem", height: "2rem"}}>
-                    <CardContent style={{marginTop:"-0.75rem"}}>
+                  <GlassmorphicCard3
+                    style={{ marginRight: "1rem", height: "2rem" }}
+                  >
+                    <CardContent style={{ marginTop: "-0.75rem" }}>
                       <Typography>#internship</Typography>
                     </CardContent>
                   </GlassmorphicCard3>
-                  <GlassmorphicCard3 style={{ marginRight: "1rem", height: "2rem"}}>
-                    <CardContent style={{marginTop:"-0.75rem"}}>
+                  <GlassmorphicCard3
+                    style={{ marginRight: "1rem", height: "2rem" }}
+                  >
+                    <CardContent style={{ marginTop: "-0.75rem" }}>
                       <Typography>#hardware</Typography>
                     </CardContent>
                   </GlassmorphicCard3>
-                  <GlassmorphicCard3 style={{ marginRight: "1rem", height: "2rem"}}>
-                    <CardContent style={{marginTop:"-0.75rem"}}>
+                  <GlassmorphicCard3
+                    style={{ marginRight: "1rem", height: "2rem" }}
+                  >
+                    <CardContent style={{ marginTop: "-0.75rem" }}>
                       <Typography>#software</Typography>
                     </CardContent>
                   </GlassmorphicCard3>
@@ -106,13 +112,10 @@ const GlassmorphicComponent = () => {
           </GlassmorphicCard2>
         </div>
 
-               
-                
-              
-          
-
         <div style={{ display: "flex", width: "100%", marginTop: "1rem" }}>
-          <GlassmorphicCard2 style={{ width: "140%", marginRight: "1rem", height:'24rem'}}>
+          <GlassmorphicCard2
+            style={{ width: "140%", marginRight: "1rem", height: "24rem" }}
+          >
             <CardContent>
               <Typography
                 variant="h7"
@@ -161,13 +164,18 @@ const GlassmorphicComponent = () => {
           </GlassmorphicCard2>
 
           <div style={{ width: "100%" }}>
-          <GlassmorphicCard2 style={{  marginRight: "2rem",  height: "55%"}}>
-            
+            <GlassmorphicCard2 style={{ marginRight: "2rem", height: "55%" }}>
               <CardContent>
                 <Typography>Important Deatils</Typography>
 
                 <Typography variant="h7">
-                  <p style={{ display: "flex", alignItems: "center", marginBottom: "-2.0rem" }}>
+                  <p
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      marginBottom: "-2.0rem",
+                    }}
+                  >
                     <svg
                       width="30"
                       height="30"
@@ -195,7 +203,13 @@ const GlassmorphicComponent = () => {
                 </Typography>
                 <br />
                 <Typography variant="h7">
-                  <p style={{ display: "flex", alignItems: "center", marginBottom: "-2.0rem" }}>
+                  <p
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      marginBottom: "-2.0rem",
+                    }}
+                  >
                     <svg
                       width="30"
                       height="30"
@@ -223,7 +237,13 @@ const GlassmorphicComponent = () => {
                 </Typography>
                 <br />
                 <Typography variant="h7">
-                  <p style={{ display: "flex", alignItems: "center", marginBottom: "-2.0rem" }}>
+                  <p
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      marginBottom: "-2.0rem",
+                    }}
+                  >
                     <svg
                       width="30"
                       height="30"
@@ -251,7 +271,13 @@ const GlassmorphicComponent = () => {
                 </Typography>
                 <br />
                 <Typography variant="h7">
-                  <p style={{ display: "flex", alignItems: "center", marginBottom: "-2.0rem" }}>
+                  <p
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      marginBottom: "-2.0rem",
+                    }}
+                  >
                     <svg
                       width="30"
                       height="30"
@@ -279,7 +305,9 @@ const GlassmorphicComponent = () => {
                 </Typography>
               </CardContent>
             </GlassmorphicCard2>
-            <GlassmorphicCard2 style={{ marginTop: "1rem", marginRight: "2rem" }}>
+            <GlassmorphicCard2
+              style={{ marginTop: "1rem", marginRight: "2rem" }}
+            >
               <CardContent>
                 <Typography>Person of Contact</Typography>
                 <div>
@@ -312,16 +340,12 @@ const GlassmorphicComponent = () => {
                       </div>
                     </CardContent>
                   </GlassmorphicCard2>
-                  
-                         
                 </div>
               </CardContent>
             </GlassmorphicCard2>
           </div>
         </div>
-        <div>
-          
-        </div>
+        <div></div>
       </div>
     </div>
   );
