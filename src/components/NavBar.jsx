@@ -32,8 +32,8 @@ import HomeIcon from "@mui/icons-material/Home";
 
 import { Link } from "react-router-dom";
 
-const pages = ["Home", "Members", "Events", "Teams"];
-const settings = ["Home", "Members", "Events", "Logout"];
+const pages = ["Home", "Members", "Events", "Resources", "Teams"];
+const settings = ["Home", "Members", "Events", "Resources", "Logout"];
 
 const Option = (icon, text) => {
   return (
