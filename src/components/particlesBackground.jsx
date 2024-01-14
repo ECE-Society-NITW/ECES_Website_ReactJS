@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Particles, { initParticlesEngine } from "@tsparticles/react";
+import TSParticles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 import particlesConfig from "./config/particles-config";
 const ParticleBackground = () => {
@@ -13,12 +13,14 @@ const ParticleBackground = () => {
     });
   }, []);
 
-  const particlesLoaded = (container) => {};
+  const particlesLoaded = () => {
+    // console.log(container);
+  };
 
   return (
     <>
       {init && (
-        <Particles
+        <TSParticles
           id="tsparticles"
           particlesLoaded={particlesLoaded}
           options={particlesConfig} // Use your particlesConfig here

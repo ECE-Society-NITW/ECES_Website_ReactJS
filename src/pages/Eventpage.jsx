@@ -1,34 +1,34 @@
-import React from "react";
-import { Card, CardContent, Typography } from "@mui/material";
-import { styled } from "@mui/system";
-import Capture from "../Assets/image.png";
+import React from 'react';
+import { Card, CardContent, Typography } from '@mui/material';
+import { styled } from '@mui/system';
+import Capture from '../Assets/image.png';
 
-const GlassmorphicCard2 = styled(Card)(({ theme }) => ({
-  backgroundColor: "rgba(255, 255, 255, 0.1)",
-  backdropFilter: "blur(10px)",
-  borderRadius: "16px",
-  overflow: "hidden",
-  boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1)",
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "flex-start",
+const GlassmorphicCard2 = styled(Card)(() => ({
+  backgroundColor: 'rgba(255, 255, 255, 0.1)',
+  backdropFilter: 'blur(10px)',
+  borderRadius: '16px',
+  overflow: 'hidden',
+  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1)',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'flex-start',
 }));
 
-const GlassmorphicCard3 = styled(Card)(({ theme }) => ({
-  backgroundColor: "rgba(255, 255, 255, 0.1)",
-  backdropFilter: "blur(10px)",
-  borderRadius: "16px",
+const GlassmorphicCard3 = styled(Card)(() => ({
+  backgroundColor: 'rgba(255, 255, 255, 0.1)',
+  backdropFilter: 'blur(10px)',
+  borderRadius: '16px',
 
-  overflow: "hidden",
-  boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1)",
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "flex-start",
+  overflow: 'hidden',
+  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1)',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'flex-start',
 }));
 
 const GlassmorphicComponent = () => {
   const imageUrl =
-    "https://media.discordapp.net/attachments/1104941169345044482/1189840947530436688/image.png?ex=659fa0bc&is=658d2bbc&hm=6cf05cbdcd7df26e9ed4a85289feef288dc92b7a27514a84ce27126dcbed6e97&=&format=webp&quality=lossless&width=172&height=181";
+    'https://media.discordapp.net/attachments/1104941169345044482/1189840947530436688/image.png?ex=659fa0bc&is=658d2bbc&hm=6cf05cbdcd7df26e9ed4a85289feef288dc92b7a27514a84ce27126dcbed6e97&=&format=webp&quality=lossless&width=172&height=181';
 
   const svgCode = `
     <svg width="30" height="31" viewBox="0 0 30 31" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -43,29 +43,25 @@ const GlassmorphicComponent = () => {
   `;
 
   return (
-    <div style={{ display: "flex", padding: "2rem" }}>
-      <div style={{ width: "55%" }}>
-        <GlassmorphicCard2 style={{ width: "90%", marginLeft: "2rem" }}>
-          <CardContent style={{ marginLeft: "1rem" }}>
+    <div style={{ display: 'flex', padding: '2rem' }}>
+      <div style={{ width: '55%' }}>
+        <GlassmorphicCard2 style={{ width: '90%', marginLeft: '2rem' }}>
+          <CardContent style={{ marginLeft: '1rem' }}>
             <img alt="logo" src={Capture} height="570" width="470" />
           </CardContent>
         </GlassmorphicCard2>
       </div>
       <div
         style={{
-          width: "80%",
-          height: "96%",
+          width: '80%',
+          height: '96%',
         }}
       >
         <div>
-          <GlassmorphicCard2 style={{ marginRight: "2rem", height: "11rem" }}>
-            <CardContent style={{ display: "flex" }}>
+          <GlassmorphicCard2 style={{ marginRight: '2rem', height: '11rem' }}>
+            <CardContent style={{ display: 'flex' }}>
               <div>
-                <img
-                  src={imageUrl}
-                  alt="Sample"
-                  style={{ width: "90%", height: "80%", borderRadius: "10%" }}
-                />
+                <img src={imageUrl} alt="Sample" style={{ width: '90%', height: '80%', borderRadius: '10%' }} />
               </div>
 
               <div style={{ flex: 3 }}>
@@ -77,32 +73,24 @@ const GlassmorphicComponent = () => {
                   ECE Society
                 </Typography>
                 <Typography variant="h6" color="text.secondary">
-                  <div style={{ display: "flex" }}>
-                    <div dangerouslySetInnerHTML={{ __html: svgCode }} />{" "}
-                    <span style={{ marginLeft: "3px" }}>
-                      National Institute of Technology Warangal
-                    </span>
+                  <div style={{ display: 'flex' }}>
+                    <div dangerouslySetInnerHTML={{ __html: svgCode }} />{' '}
+                    <span style={{ marginLeft: '3px' }}>National Institute of Technology Warangal</span>
                   </div>
                 </Typography>
-                <div style={{ display: "flex" }}>
-                  <GlassmorphicCard3
-                    style={{ marginRight: "1rem", height: "2rem" }}
-                  >
-                    <CardContent style={{ marginTop: "-0.75rem" }}>
+                <div style={{ display: 'flex' }}>
+                  <GlassmorphicCard3 style={{ marginRight: '1rem', height: '2rem' }}>
+                    <CardContent style={{ marginTop: '-0.75rem' }}>
                       <Typography>#internship</Typography>
                     </CardContent>
                   </GlassmorphicCard3>
-                  <GlassmorphicCard3
-                    style={{ marginRight: "1rem", height: "2rem" }}
-                  >
-                    <CardContent style={{ marginTop: "-0.75rem" }}>
+                  <GlassmorphicCard3 style={{ marginRight: '1rem', height: '2rem' }}>
+                    <CardContent style={{ marginTop: '-0.75rem' }}>
                       <Typography>#hardware</Typography>
                     </CardContent>
                   </GlassmorphicCard3>
-                  <GlassmorphicCard3
-                    style={{ marginRight: "1rem", height: "2rem" }}
-                  >
-                    <CardContent style={{ marginTop: "-0.75rem" }}>
+                  <GlassmorphicCard3 style={{ marginRight: '1rem', height: '2rem' }}>
+                    <CardContent style={{ marginTop: '-0.75rem' }}>
                       <Typography>#software</Typography>
                     </CardContent>
                   </GlassmorphicCard3>
@@ -112,27 +100,15 @@ const GlassmorphicComponent = () => {
           </GlassmorphicCard2>
         </div>
 
-        <div style={{ display: "flex", width: "100%", marginTop: "1rem" }}>
-          <GlassmorphicCard2
-            style={{ width: "140%", marginRight: "1rem", height: "24rem" }}
-          >
+        <div style={{ display: 'flex', width: '100%', marginTop: '1rem' }}>
+          <GlassmorphicCard2 style={{ width: '140%', marginRight: '1rem', height: '24rem' }}>
             <CardContent>
-              <Typography
-                variant="h7"
-                color="text.secondary"
-                style={{ fontFamily: "Times New Roman, serif" }}
-              >
-                Embark on a thrilling journey with the ECE Society's visionary
-                Apprenticeship program! This initiative can be your guiding
-                light through the dynamic world of internships and professional
-                growth.
+              <Typography variant="h7" color="text.secondary" style={{ fontFamily: 'Times New Roman, serif' }}>
+                Embark on a thrilling journey with the ECE Society&apos;s visionary Apprenticeship program! This initiative
+                can be your guiding light through the dynamic world of internships and professional growth.
               </Typography>
               <br />
-              <Typography
-                variant="h7"
-                color="text.secondary"
-                style={{ fontFamily: "Times New Roman, serif" }}
-              >
+              <Typography variant="h7" color="text.secondary" style={{ fontFamily: 'Times New Roman, serif' }}>
                 Domains offered:
                 <ul>
                   <li> - Software</li>
@@ -141,60 +117,39 @@ const GlassmorphicComponent = () => {
                 </ul>
               </Typography>
 
-              <Typography
-                variant="h7"
-                color="text.secondary"
-                style={{ fontFamily: "Times New Roman, serif" }}
-              >
-                Our training program is crafted by experienced seniors who have
-                conquered this process already.
+              <Typography variant="h7" color="text.secondary" style={{ fontFamily: 'Times New Roman, serif' }}>
+                Our training program is crafted by experienced seniors who have conquered this process already.
               </Typography>
               <br />
               <br />
-              <Typography
-                variant="h7"
-                color="text.secondary"
-                style={{ fontFamily: "Times New Roman, serif" }}
-              >
-                Join us from 16th December as we dive deep into the real-world
-                scenarios and sharpen your skills through insightful guidance
-                and experience.
+              <Typography variant="h7" color="text.secondary" style={{ fontFamily: 'Times New Roman, serif' }}>
+                Join us from 16th December as we dive deep into the real-world scenarios and sharpen your skills through
+                insightful guidance and experience.
               </Typography>
             </CardContent>
           </GlassmorphicCard2>
 
-          <div style={{ width: "100%" }}>
-            <GlassmorphicCard2 style={{ marginRight: "2rem", height: "55%" }}>
+          <div style={{ width: '100%' }}>
+            <GlassmorphicCard2 style={{ marginRight: '2rem', height: '55%' }}>
               <CardContent>
                 <Typography>Important Deatils</Typography>
 
                 <Typography variant="h7">
                   <p
                     style={{
-                      display: "flex",
-                      alignItems: "center",
-                      marginBottom: "-2.0rem",
+                      display: 'flex',
+                      alignItems: 'center',
+                      marginBottom: '-2.0rem',
                     }}
                   >
-                    <svg
-                      width="30"
-                      height="30"
-                      viewBox="0 0 30 30"
-                      fill="none"
-                      xmlns="http://www.w3.org/2908/svg"
-                    >
+                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2908/svg">
                       <rect width="30" height="30" fill="url(#pattern0)" />
                       <defs>
-                        <pattern
-                          id="pattern0"
-                          patternContentUnits="objectBoundingBox"
-                          width="1"
-                          height="1"
-                        ></pattern>
+                        <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1"></pattern>
                         <image id="image0_2_48" width="100" height="100" />
                       </defs>
                     </svg>
-                    <span style={{ marginLeft: "0.75rem" }}>
+                    <span style={{ marginLeft: '0.75rem' }}>
                       Deadline
                       <br />
                       5th Jan 24, 11:59pm IST
@@ -205,30 +160,19 @@ const GlassmorphicComponent = () => {
                 <Typography variant="h7">
                   <p
                     style={{
-                      display: "flex",
-                      alignItems: "center",
-                      marginBottom: "-2.0rem",
+                      display: 'flex',
+                      alignItems: 'center',
+                      marginBottom: '-2.0rem',
                     }}
                   >
-                    <svg
-                      width="30"
-                      height="30"
-                      viewBox="0 0 30 30"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
+                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <rect width="30" height="30" fill="url(#pattern0)" />
                       <defs>
-                        <pattern
-                          id="pattern0"
-                          patternContentUnits="objectBoundingBox"
-                          width="1"
-                          height="1"
-                        ></pattern>
+                        <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1"></pattern>
                         <image id="image0_2_48" width="10" height="10" />
                       </defs>
                     </svg>
-                    <span style={{ marginLeft: "0.75rem" }}>
+                    <span style={{ marginLeft: '0.75rem' }}>
                       Team Size
                       <br />
                       2-4
@@ -239,30 +183,19 @@ const GlassmorphicComponent = () => {
                 <Typography variant="h7">
                   <p
                     style={{
-                      display: "flex",
-                      alignItems: "center",
-                      marginBottom: "-2.0rem",
+                      display: 'flex',
+                      alignItems: 'center',
+                      marginBottom: '-2.0rem',
                     }}
                   >
-                    <svg
-                      width="30"
-                      height="30"
-                      viewBox="0 0 30 30"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
+                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <rect width="30" height="30" fill="url(#pattern0)" />
                       <defs>
-                        <pattern
-                          id="pattern0"
-                          patternContentUnits="objectBoundingBox"
-                          width="1"
-                          height="1"
-                        ></pattern>
+                        <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1"></pattern>
                         <image id="image0_2_48" width="100" height="100" />
                       </defs>
                     </svg>
-                    <span style={{ marginLeft: "0.75rem" }}>
+                    <span style={{ marginLeft: '0.75rem' }}>
                       Eligibility
                       <br />
                       B.Tech.
@@ -273,30 +206,19 @@ const GlassmorphicComponent = () => {
                 <Typography variant="h7">
                   <p
                     style={{
-                      display: "flex",
-                      alignItems: "center",
-                      marginBottom: "-2.0rem",
+                      display: 'flex',
+                      alignItems: 'center',
+                      marginBottom: '-2.0rem',
                     }}
                   >
-                    <svg
-                      width="30"
-                      height="30"
-                      viewBox="0 0 30 30"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
+                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <rect width="30" height="30" fill="url(#pattern0)" />
                       <defs>
-                        <pattern
-                          id="pattern0"
-                          patternContentUnits="objectBoundingBox"
-                          width="1"
-                          height="1"
-                        ></pattern>
+                        <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1"></pattern>
                         <image id="image0_2_48" width="100" height="100" />
                       </defs>
                     </svg>
-                    <span style={{ marginLeft: "0.75rem" }}>
+                    <span style={{ marginLeft: '0.75rem' }}>
                       Awards
                       <br />
                       Participation Certificate
@@ -305,22 +227,14 @@ const GlassmorphicComponent = () => {
                 </Typography>
               </CardContent>
             </GlassmorphicCard2>
-            <GlassmorphicCard2
-              style={{ marginTop: "1rem", marginRight: "2rem" }}
-            >
+            <GlassmorphicCard2 style={{ marginTop: '1rem', marginRight: '2rem' }}>
               <CardContent>
                 <Typography>Person of Contact</Typography>
                 <div>
                   <GlassmorphicCard2>
                     <CardContent>
-                      <div style={{ display: "flex", marginBottom: "-15px" }}>
-                        <svg
-                          width="40"
-                          height="40"
-                          viewBox="0 0 30 30"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
+                      <div style={{ display: 'flex', marginBottom: '-15px' }}>
+                        <svg width="40" height="40" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <rect width="30" height="30" fill="url(#pattern0)" />
                           <defs>
                             <pattern
@@ -332,7 +246,7 @@ const GlassmorphicComponent = () => {
                             <image id="image0_2_48" width="100" height="100" />
                           </defs>
                         </svg>
-                        <Typography variant="h7" sx={{ marginLeft: "0.5rem" }}>
+                        <Typography variant="h7" sx={{ marginLeft: '0.5rem' }}>
                           person 1
                           <br />
                           +91 0123456789
